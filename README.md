@@ -1,5 +1,5 @@
 
-# WishDrop v2 — Full App Platform
+# WishDrop — Full App Platform
 
 Pinterest-style discovery + Hopper-style price tracking — personalized by profile (height, weight, sizes, brands, stores, categories, price level).
 
