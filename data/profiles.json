@@ -1,0 +1,28 @@
+{
+  "shalini": {
+    "height_in": 64,
+    "weight_lb": 140,
+    "sizes": {
+      "top": "m",
+      "bottom": "8",
+      "shoe": "8"
+    },
+    "style": [
+      "Luxury"
+    ],
+    "price_pref": "Mid-range",
+    "brands": [
+      "Chanel"
+    ],
+    "stores": [
+      "Amazon",
+      "Nordstrom"
+    ],
+    "categories": [
+      "Beauty > Skincare",
+      "Women > Dresses",
+      "Women > Shoes"
+    ],
+    "notes": ""
+  }
+}
