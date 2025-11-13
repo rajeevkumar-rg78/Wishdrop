@@ -1,201 +1,255 @@
-id,name,brand,category,store,msrp,price,discount_pct,image_url,product_url
-P-1000,Samsung Signature Handbag,Samsung,Women > Shoes,Nordstrom,1496.02,894.56,40,https://source.unsplash.com/600x750/?Samsung++Shoes,https://www.nordstrom.com/sr?keyword=Samsung+Signature+Handbag
-P-1001,Sony Classic Handbag,Sony,Home > Furniture,Best Buy,219.53,146.81,33,https://source.unsplash.com/600x750/?Sony++Furniture,https://www.bestbuy.com/site/searchpage.jsp?st=Sony+Classic+Handbag
-P-1002,Versace Ultra Laptop,Versace,Men > Shirts,Macy's,1223.94,886.74,28,https://source.unsplash.com/600x750/?Versace++Shirts,https://www.google.com/search?q=Versace+Ultra+Laptop
-P-1003,Fendi Signature Laptop,Fendi,Beauty > Makeup,Apple Store,592.47,502.25,15,https://source.unsplash.com/600x750/?Fendi++Makeup,https://www.apple.com/us/search/Fendi+Signature+Laptop
-P-1004,Bottega Veneta Classic Handbag,Bottega Veneta,Men > Pants,Bergdorf Goodman,469.86,378.42,19,https://source.unsplash.com/600x750/?Bottega+Veneta++Pants,https://www.google.com/search?q=Bottega+Veneta+Classic+Handbag
-P-1005,Coach Classic TV,Coach,Women > Shoes,Versace,1702.61,1262.47,26,https://source.unsplash.com/600x750/?Coach++Shoes,https://www.google.com/search?q=Coach+Classic+TV
-P-1006,Nike Ultra Serum,Nike,Women > Shoes,Sephora,203.66,125.71,38,https://source.unsplash.com/600x750/?Nike++Shoes,https://www.google.com/search?q=Nike+Ultra+Serum
-P-1007,Adidas Limited Handbag,Adidas,Women > Jewelry,Costco,185.63,141.92,24,https://source.unsplash.com/600x750/?Adidas++Jewelry,https://www.costco.com/CatalogSearch?dept=All&keyword=Adidas+Limited+Handbag
-P-1008,Fendi Limited Shoes,Fendi,Sports > Fitness,Neiman Marcus,791.25,539.13,32,https://source.unsplash.com/600x750/?Fendi++Fitness,https://www.neimanmarcus.com/s/Fendi+Limited+Shoes
-P-1009,Valentino Classic Perfume,Valentino,Men > Watches,Prada,1356.84,1059.32,22,https://source.unsplash.com/600x750/?Valentino++Watches,https://www.google.com/search?q=Valentino+Classic+Perfume
-P-1010,Samsung Icon Watch,Samsung,Women > Accessories,Best Buy,1471.8,832.1,43,https://source.unsplash.com/600x750/?Samsung++Accessories,https://www.bestbuy.com/site/searchpage.jsp?st=Samsung+Icon+Watch
-P-1011,Samsung Classic Jacket,Samsung,Home > Appliances,Best Buy,478.25,301.16,37,https://source.unsplash.com/600x750/?Samsung++Appliances,https://www.bestbuy.com/site/searchpage.jsp?st=Samsung+Classic+Jacket
-P-1012,Prada Ultra Serum,Prada,Costco > Snacks,Saint Laurent,832.27,438.17,47,https://source.unsplash.com/600x750/?Prada++Snacks,https://www.google.com/search?q=Prada+Ultra+Serum
-P-1013,Versace Icon Shoes,Versace,Electronics > Headphones,Target,821.48,711.25,13,https://source.unsplash.com/600x750/?Versace++Headphones,https://www.google.com/search?q=Versace+Icon+Shoes
-P-1014,Burberry Ultra Laptop,Burberry,Women > Handbags,Gucci,1502.73,1075.34,28,https://source.unsplash.com/600x750/?Burberry++Handbags,https://www.google.com/search?q=Burberry+Ultra+Laptop
-P-1015,Adidas Ultra TV,Adidas,Men > Accessories,Versace,477.68,429.44,10,https://source.unsplash.com/600x750/?Adidas++Accessories,https://www.google.com/search?q=Adidas+Ultra+TV
-P-1016,Gucci Signature Laptop,Gucci,Costco > Essentials,Bloomingdale's,1729.15,970.29,44,https://source.unsplash.com/600x750/?Gucci++Essentials,https://www.bloomingdales.com/shop/featured/Gucci+Signature+Laptop
-P-1017,Apple Ultra Watch,Apple,Women > Bottoms,Sephora,794.16,713.51,10,https://source.unsplash.com/600x750/?Apple++Bottoms,https://www.google.com/search?q=Apple+Ultra+Watch
-P-1018,Nike Ultra Watch,Nike,Sports > Fitness,Nordstrom,1376.55,751.35,45,https://source.unsplash.com/600x750/?Nike++Fitness,https://www.nordstrom.com/sr?keyword=Nike+Ultra+Watch
-P-1019,Lancome Icon Dress,Lancome,Electronics > Headphones,Saint Laurent,267.53,180.29,33,https://source.unsplash.com/600x750/?Lancome++Headphones,https://www.google.com/search?q=Lancome+Icon+Dress
-P-1020,Estee Lauder Signature Airfryer,Estee Lauder,Sports > Equipment,Home Depot,563.61,394.66,30,https://source.unsplash.com/600x750/?Estee+Lauder++Equipment,https://www.google.com/search?q=Estee+Lauder+Signature+Airfryer
-P-1021,Dior Ultra Jacket,Dior,Sports > Fitness,Nike,631.97,477.5,24,https://source.unsplash.com/600x750/?Dior++Fitness,https://www.google.com/search?q=Dior+Ultra+Jacket
-P-1022,Louis Vuitton Ultra Dress,Louis Vuitton,Men > Watches,Chanel,1101.79,894.05,19,https://source.unsplash.com/600x750/?Louis+Vuitton++Watches,https://www.google.com/search?q=Louis+Vuitton+Ultra+Dress
-P-1023,Apple Limited Jacket,Apple,Men > Shoes,Target,87.98,76.69,13,https://source.unsplash.com/600x750/?Apple++Shoes,https://www.google.com/search?q=Apple+Limited+Jacket
-P-1024,Prada Icon Handbag,Prada,Men > Shirts,Apple Store,1896.55,1013.25,47,https://source.unsplash.com/600x750/?Prada++Shirts,https://www.apple.com/us/search/Prada+Icon+Handbag
-P-1025,Lancome Ultra Shoes,Lancome,Electronics > Phones,Bergdorf Goodman,300.36,207.28,31,https://source.unsplash.com/600x750/?Lancome++Phones,https://www.google.com/search?q=Lancome+Ultra+Shoes
-P-1026,Burberry Ultra Jacket,Burberry,Electronics > Laptops,Sony Store,875.12,511.7,42,https://source.unsplash.com/600x750/?Burberry++Laptops,https://www.google.com/search?q=Burberry+Ultra+Jacket
-P-1027,Dyson Icon Airfryer,Dyson,Men > Jackets,Sephora,1990.54,1512.71,24,https://source.unsplash.com/600x750/?Dyson++Jackets,https://www.google.com/search?q=Dyson+Icon+Airfryer
-P-1028,Michael Kors Ultra Airfryer,Michael Kors,Women > Shoes,Gucci,488.16,310.1,36,https://source.unsplash.com/600x750/?Michael+Kors++Shoes,https://www.google.com/search?q=Michael+Kors+Ultra+Airfryer
-P-1029,Fendi Classic Jacket,Fendi,Electronics > Wearables,Gucci,64.02,50.14,22,https://source.unsplash.com/600x750/?Fendi++Wearables,https://www.google.com/search?q=Fendi+Classic+Jacket
-P-1030,Gucci Signature Watch,Gucci,Sports > Equipment,Bloomingdale's,1726.29,912.07,47,https://source.unsplash.com/600x750/?Gucci++Equipment,https://www.bloomingdales.com/shop/featured/Gucci+Signature+Watch
-P-1031,Sony Ultra Perfume,Sony,Beauty > Fragrance,Prada,1101.51,869.47,21,https://source.unsplash.com/600x750/?Sony++Fragrance,https://www.google.com/search?q=Sony+Ultra+Perfume
-P-1032,Tory Burch Classic Laptop,Tory Burch,Men > Shirts,Target,1624.62,936.05,42,https://source.unsplash.com/600x750/?Tory+Burch++Shirts,https://www.google.com/search?q=Tory+Burch+Classic+Laptop
-P-1033,Valentino Classic Dress,Valentino,Beauty > Skincare,Ulta Beauty,960.7,760.52,21,https://source.unsplash.com/600x750/?Valentino++Skincare,https://www.google.com/search?q=Valentino+Classic+Dress
-P-1034,Coach Signature Jacket,Coach,Home > Furniture,Saint Laurent,1611.16,876.0,46,https://source.unsplash.com/600x750/?Coach++Furniture,https://www.google.com/search?q=Coach+Signature+Jacket
-P-1035,Nike Signature Handbag,Nike,Beauty > Makeup,Bergdorf Goodman,872.67,533.57,39,https://source.unsplash.com/600x750/?Nike++Makeup,https://www.google.com/search?q=Nike+Signature+Handbag
-P-1036,Michael Kors Ultra Dress,Michael Kors,Costco > Snacks,Best Buy,240.92,183.31,24,https://source.unsplash.com/600x750/?Michael+Kors++Snacks,https://www.bestbuy.com/site/searchpage.jsp?st=Michael+Kors+Ultra+Dress
-P-1037,Gucci Signature Laptop,Gucci,Costco > Essentials,Gucci,374.31,259.87,31,https://source.unsplash.com/600x750/?Gucci++Essentials,https://www.google.com/search?q=Gucci+Signature+Laptop
-P-1038,Prada Icon Watch,Prada,Women > Accessories,Sephora,54.2,35.56,34,https://source.unsplash.com/600x750/?Prada++Accessories,https://www.google.com/search?q=Prada+Icon+Watch
-P-1039,Kate Spade Icon Shoes,Kate Spade,Home > Appliances,Home Depot,1991.07,1438.16,28,https://source.unsplash.com/600x750/?Kate+Spade++Appliances,https://www.google.com/search?q=Kate+Spade+Icon+Shoes
-P-1040,Versace Ultra Dress,Versace,Men > Jackets,Prada,1938.98,1418.7,27,https://source.unsplash.com/600x750/?Versace++Jackets,https://www.google.com/search?q=Versace+Ultra+Dress
-P-1041,Estee Lauder Ultra Shoes,Estee Lauder,Men > Shoes,Bloomingdale's,147.78,102.07,31,https://source.unsplash.com/600x750/?Estee+Lauder++Shoes,https://www.bloomingdales.com/shop/featured/Estee+Lauder+Ultra+Shoes
-P-1042,Prada Classic Jacket,Prada,Electronics > Laptops,Saks Fifth Avenue,1710.12,901.93,47,https://source.unsplash.com/600x750/?Prada++Laptops,https://www.saksfifthavenue.com/search?q=Prada+Classic+Jacket
-P-1043,Coach Ultra Handbag,Coach,Women > Shoes,Apple Store,530.12,391.13,26,https://source.unsplash.com/600x750/?Coach++Shoes,https://www.apple.com/us/search/Coach+Ultra+Handbag
-P-1044,Kate Spade Limited Jacket,Kate Spade,Home > Kitchen,Apple Store,1152.19,721.9,37,https://source.unsplash.com/600x750/?Kate+Spade++Kitchen,https://www.apple.com/us/search/Kate+Spade+Limited+Jacket
-P-1045,Sony Limited TV,Sony,Home > Appliances,Saint Laurent,515.44,339.32,34,https://source.unsplash.com/600x750/?Sony++Appliances,https://www.google.com/search?q=Sony+Limited+TV
-P-1046,Bottega Veneta Ultra Handbag,Bottega Veneta,Costco > Essentials,Saks Fifth Avenue,68.17,51.02,25,https://source.unsplash.com/600x750/?Bottega+Veneta++Essentials,https://www.saksfifthavenue.com/search?q=Bottega+Veneta+Ultra+Handbag
-P-1047,Gucci Limited Handbag,Gucci,Electronics > Phones,Prada,1036.48,573.16,45,https://source.unsplash.com/600x750/?Gucci++Phones,https://www.google.com/search?q=Gucci+Limited+Handbag
-P-1048,Fendi Limited Perfume,Fendi,Men > Watches,Burberry,357.61,298.07,17,https://source.unsplash.com/600x750/?Fendi++Watches,https://www.google.com/search?q=Fendi+Limited+Perfume
-P-1049,Tom Ford Beauty Limited Handbag,Tom Ford Beauty,Electronics > Headphones,Macy's,65.26,53.96,17,https://source.unsplash.com/600x750/?Tom+Ford+Beauty++Headphones,https://www.google.com/search?q=Tom+Ford+Beauty+Limited+Handbag
-P-1050,Louis Vuitton Signature Watch,Louis Vuitton,Men > Pants,Neiman Marcus,1784.94,1422.54,20,https://source.unsplash.com/600x750/?Louis+Vuitton++Pants,https://www.neimanmarcus.com/s/Louis+Vuitton+Signature+Watch
-P-1051,Celine Limited Airfryer,Celine,Electronics > TVs,Prada,1449.34,842.7,42,https://source.unsplash.com/600x750/?Celine++TVs,https://www.google.com/search?q=Celine+Limited+Airfryer
-P-1052,Tory Burch Limited Dress,Tory Burch,Men > Pants,Bloomingdale's,229.98,153.96,33,https://source.unsplash.com/600x750/?Tory+Burch++Pants,https://www.bloomingdales.com/shop/featured/Tory+Burch+Limited+Dress
-P-1053,Chanel Icon Airfryer,Chanel,Men > Shoes,Bergdorf Goodman,1292.37,781.6,40,https://source.unsplash.com/600x750/?Chanel++Shoes,https://www.google.com/search?q=Chanel+Icon+Airfryer
-P-1054,Dyson Signature Airfryer,Dyson,Beauty > Skincare,Best Buy,68.86,36.5,47,https://source.unsplash.com/600x750/?Dyson++Skincare,https://www.bestbuy.com/site/searchpage.jsp?st=Dyson+Signature+Airfryer
-P-1055,Prada Signature Dress,Prada,Costco > Household,Versace,1185.89,663.19,44,https://source.unsplash.com/600x750/?Prada++Household,https://www.google.com/search?q=Prada+Signature+Dress
-P-1056,Celine Signature Handbag,Celine,Men > Watches,Bloomingdale's,1802.9,1052.95,42,https://source.unsplash.com/600x750/?Celine++Watches,https://www.bloomingdales.com/shop/featured/Celine+Signature+Handbag
-P-1057,Valentino Ultra Shoes,Valentino,Costco > Essentials,Best Buy,1774.06,1175.41,34,https://source.unsplash.com/600x750/?Valentino++Essentials,https://www.bestbuy.com/site/searchpage.jsp?st=Valentino+Ultra+Shoes
-P-1058,Fendi Icon Dress,Fendi,Sports > Fitness,Chanel,1953.6,1610.37,18,https://source.unsplash.com/600x750/?Fendi++Fitness,https://www.google.com/search?q=Fendi+Icon+Dress
-P-1059,Saint Laurent Signature Watch,Saint Laurent,Home > Furniture,Saint Laurent,1575.65,1047.31,34,https://source.unsplash.com/600x750/?Saint+Laurent++Furniture,https://www.google.com/search?q=Saint+Laurent+Signature+Watch
-P-1060,Saint Laurent Icon Jacket,Saint Laurent,Costco > Snacks,Costco,260.79,221.38,15,https://source.unsplash.com/600x750/?Saint+Laurent++Snacks,https://www.costco.com/CatalogSearch?dept=All&keyword=Saint+Laurent+Icon+Jacket
-P-1061,Versace Signature Jacket,Versace,Costco > Household,Amazon,731.83,606.11,17,https://source.unsplash.com/600x750/?Versace++Household,https://www.amazon.com/s?k=Versace+Signature+Jacket
-P-1062,Chanel Classic Watch,Chanel,Home > Kitchen,Prada,827.01,505.67,39,https://source.unsplash.com/600x750/?Chanel++Kitchen,https://www.google.com/search?q=Chanel+Classic+Watch
-P-1063,Valentino Ultra Serum,Valentino,Electronics > Headphones,Macy's,829.37,740.18,11,https://source.unsplash.com/600x750/?Valentino++Headphones,https://www.google.com/search?q=Valentino+Ultra+Serum
-P-1064,Chanel Limited Dress,Chanel,Women > Shoes,Louis Vuitton,398.21,352.42,11,https://source.unsplash.com/600x750/?Chanel++Shoes,https://www.google.com/search?q=Chanel+Limited+Dress
-P-1065,Dior Icon Perfume,Dior,Electronics > TVs,Ulta Beauty,724.09,589.82,19,https://source.unsplash.com/600x750/?Dior++TVs,https://www.google.com/search?q=Dior+Icon+Perfume
-P-1066,Lululemon Classic Laptop,Lululemon,Women > Shoes,Sephora,1804.03,1039.18,42,https://source.unsplash.com/600x750/?Lululemon++Shoes,https://www.google.com/search?q=Lululemon+Classic+Laptop
-P-1067,Chanel Signature Serum,Chanel,Electronics > Laptops,Best Buy,1389.37,1217.23,12,https://source.unsplash.com/600x750/?Chanel++Laptops,https://www.bestbuy.com/site/searchpage.jsp?st=Chanel+Signature+Serum
-P-1068,Kate Spade Classic Watch,Kate Spade,Women > Bottoms,Adidas,1845.5,1382.76,25,https://source.unsplash.com/600x750/?Kate+Spade++Bottoms,https://www.google.com/search?q=Kate+Spade+Classic+Watch
-P-1069,Lululemon Limited Airfryer,Lululemon,Men > Jackets,Adidas,846.37,559.42,34,https://source.unsplash.com/600x750/?Lululemon++Jackets,https://www.google.com/search?q=Lululemon+Limited+Airfryer
-P-1070,Louis Vuitton Signature Perfume,Louis Vuitton,Women > Jewelry,Ulta Beauty,1346.61,877.53,35,https://source.unsplash.com/600x750/?Louis+Vuitton++Jewelry,https://www.google.com/search?q=Louis+Vuitton+Signature+Perfume
-P-1071,Adidas Limited Jacket,Adidas,Men > Jackets,Sephora,1118.48,559.42,50,https://source.unsplash.com/600x750/?Adidas++Jackets,https://www.google.com/search?q=Adidas+Limited+Jacket
-P-1072,Kate Spade Icon TV,Kate Spade,Costco > Snacks,Apple Store,1232.99,775.43,37,https://source.unsplash.com/600x750/?Kate+Spade++Snacks,https://www.apple.com/us/search/Kate+Spade+Icon+TV
-P-1073,Sony Signature Handbag,Sony,Women > Jewelry,Macy's,972.71,836.99,14,https://source.unsplash.com/600x750/?Sony++Jewelry,https://www.google.com/search?q=Sony+Signature+Handbag
-P-1074,Celine Signature Watch,Celine,Electronics > Laptops,Adidas,1284.23,814.3,37,https://source.unsplash.com/600x750/?Celine++Laptops,https://www.google.com/search?q=Celine+Signature+Watch
-P-1075,Fendi Icon Perfume,Fendi,Costco > Snacks,Prada,337.34,174.91,48,https://source.unsplash.com/600x750/?Fendi++Snacks,https://www.google.com/search?q=Fendi+Icon+Perfume
-P-1076,Lancome Signature Laptop,Lancome,Women > Bottoms,Amazon,858.16,645.26,25,https://source.unsplash.com/600x750/?Lancome++Bottoms,https://www.amazon.com/s?k=Lancome+Signature+Laptop
-P-1077,Tory Burch Classic Laptop,Tory Burch,Men > Accessories,Gucci,337.76,261.78,22,https://source.unsplash.com/600x750/?Tory+Burch++Accessories,https://www.google.com/search?q=Tory+Burch+Classic+Laptop
-P-1078,Fendi Signature Handbag,Fendi,Women > Accessories,Costco,1060.02,551.3,48,https://source.unsplash.com/600x750/?Fendi++Accessories,https://www.costco.com/CatalogSearch?dept=All&keyword=Fendi+Signature+Handbag
-P-1079,Michael Kors Ultra Serum,Michael Kors,Women > Handbags,Amazon,1351.78,1210.06,10,https://source.unsplash.com/600x750/?Michael+Kors++Handbags,https://www.amazon.com/s?k=Michael+Kors+Ultra+Serum
-P-1080,Lancome Ultra Laptop,Lancome,Sports > Equipment,Amazon,1244.67,980.44,21,https://source.unsplash.com/600x750/?Lancome++Equipment,https://www.amazon.com/s?k=Lancome+Ultra+Laptop
-P-1081,Nike Limited Jacket,Nike,Beauty > Makeup,Chanel,1500.13,1034.89,31,https://source.unsplash.com/600x750/?Nike++Makeup,https://www.google.com/search?q=Nike+Limited+Jacket
-P-1082,Samsung Icon Handbag,Samsung,Men > Pants,Macy's,994.96,592.7,40,https://source.unsplash.com/600x750/?Samsung++Pants,https://www.google.com/search?q=Samsung+Icon+Handbag
-P-1083,Dyson Ultra Handbag,Dyson,Men > Jackets,Gucci,579.84,364.07,37,https://source.unsplash.com/600x750/?Dyson++Jackets,https://www.google.com/search?q=Dyson+Ultra+Handbag
-P-1084,Louis Vuitton Signature Handbag,Louis Vuitton,Women > Handbags,Gucci,796.92,447.17,44,https://source.unsplash.com/600x750/?Louis+Vuitton++Handbags,https://www.google.com/search?q=Louis+Vuitton+Signature+Handbag
-P-1085,Kate Spade Signature Laptop,Kate Spade,Beauty > Skincare,Saint Laurent,1108.09,738.33,33,https://source.unsplash.com/600x750/?Kate+Spade++Skincare,https://www.google.com/search?q=Kate+Spade+Signature+Laptop
-P-1086,Coach Ultra Laptop,Coach,Sports > Equipment,Apple Store,1894.82,962.21,49,https://source.unsplash.com/600x750/?Coach++Equipment,https://www.apple.com/us/search/Coach+Ultra+Laptop
-P-1087,Tory Burch Icon Airfryer,Tory Burch,Women > Dresses,Versace,632.29,414.78,34,https://source.unsplash.com/600x750/?Tory+Burch++Dresses,https://www.google.com/search?q=Tory+Burch+Icon+Airfryer
-P-1088,Estee Lauder Icon Jacket,Estee Lauder,Home > Furniture,Best Buy,1609.74,1382.97,14,https://source.unsplash.com/600x750/?Estee+Lauder++Furniture,https://www.bestbuy.com/site/searchpage.jsp?st=Estee+Lauder+Icon+Jacket
-P-1089,Burberry Icon Shoes,Burberry,Beauty > Skincare,Target,106.6,67.63,37,https://source.unsplash.com/600x750/?Burberry++Skincare,https://www.google.com/search?q=Burberry+Icon+Shoes
-P-1090,Michael Kors Ultra Perfume,Michael Kors,Women > Handbags,Sony Store,1091.54,941.75,14,https://source.unsplash.com/600x750/?Michael+Kors++Handbags,https://www.google.com/search?q=Michael+Kors+Ultra+Perfume
-P-1091,Sony Icon Shoes,Sony,Women > Dresses,Saks Fifth Avenue,1303.36,722.43,45,https://source.unsplash.com/600x750/?Sony++Dresses,https://www.saksfifthavenue.com/search?q=Sony+Icon+Shoes
-P-1092,Prada Limited Laptop,Prada,Men > Pants,Sephora,688.34,469.37,32,https://source.unsplash.com/600x750/?Prada++Pants,https://www.google.com/search?q=Prada+Limited+Laptop
-P-1093,Burberry Classic Airfryer,Burberry,Costco > Essentials,Ulta Beauty,541.93,288.72,47,https://source.unsplash.com/600x750/?Burberry++Essentials,https://www.google.com/search?q=Burberry+Classic+Airfryer
-P-1094,Prada Classic Dress,Prada,Men > Watches,Gucci,1317.78,1070.69,19,https://source.unsplash.com/600x750/?Prada++Watches,https://www.google.com/search?q=Prada+Classic+Dress
-P-1095,Fendi Icon Handbag,Fendi,Women > Jewelry,Nordstrom,1261.6,751.18,40,https://source.unsplash.com/600x750/?Fendi++Jewelry,https://www.nordstrom.com/sr?keyword=Fendi+Icon+Handbag
-P-1096,Adidas Signature Perfume,Adidas,Women > Jewelry,Amazon,1413.96,1140.73,19,https://source.unsplash.com/600x750/?Adidas++Jewelry,https://www.amazon.com/s?k=Adidas+Signature+Perfume
-P-1097,Apple Limited Handbag,Apple,Home > Furniture,Costco,273.34,226.25,17,https://source.unsplash.com/600x750/?Apple++Furniture,https://www.costco.com/CatalogSearch?dept=All&keyword=Apple+Limited+Handbag
-P-1098,Adidas Icon Laptop,Adidas,Women > Dresses,Burberry,1172.8,1012.37,14,https://source.unsplash.com/600x750/?Adidas++Dresses,https://www.google.com/search?q=Adidas+Icon+Laptop
-P-1099,Dyson Signature Handbag,Dyson,Women > Jewelry,Saks Fifth Avenue,1204.59,1002.49,17,https://source.unsplash.com/600x750/?Dyson++Jewelry,https://www.saksfifthavenue.com/search?q=Dyson+Signature+Handbag
-P-1100,Dyson Classic Perfume,Dyson,Costco > Essentials,Burberry,1708.07,1264.25,26,https://source.unsplash.com/600x750/?Dyson++Essentials,https://www.google.com/search?q=Dyson+Classic+Perfume
-P-1101,Tom Ford Beauty Classic Airfryer,Tom Ford Beauty,Women > Tops,Versace,1088.85,832.54,24,https://source.unsplash.com/600x750/?Tom+Ford+Beauty++Tops,https://www.google.com/search?q=Tom+Ford+Beauty+Classic+Airfryer
-P-1102,Samsung Classic Laptop,Samsung,Men > Shoes,Nordstrom,1706.67,1414.71,17,https://source.unsplash.com/600x750/?Samsung++Shoes,https://www.nordstrom.com/sr?keyword=Samsung+Classic+Laptop
-P-1103,Valentino Ultra Watch,Valentino,Electronics > Headphones,Amazon,1429.25,963.59,33,https://source.unsplash.com/600x750/?Valentino++Headphones,https://www.amazon.com/s?k=Valentino+Ultra+Watch
-P-1104,Apple Ultra Watch,Apple,Costco > Snacks,Best Buy,1560.55,1070.46,31,https://source.unsplash.com/600x750/?Apple++Snacks,https://www.bestbuy.com/site/searchpage.jsp?st=Apple+Ultra+Watch
-P-1105,Bottega Veneta Icon Jacket,Bottega Veneta,Sports > Fitness,Gucci,1669.93,892.85,47,https://source.unsplash.com/600x750/?Bottega+Veneta++Fitness,https://www.google.com/search?q=Bottega+Veneta+Icon+Jacket
-P-1106,Lancome Classic TV,Lancome,Beauty > Makeup,Apple Store,1240.15,808.08,35,https://source.unsplash.com/600x750/?Lancome++Makeup,https://www.apple.com/us/search/Lancome+Classic+TV
-P-1107,Bottega Veneta Limited Watch,Bottega Veneta,Women > Accessories,Target,463.63,379.77,18,https://source.unsplash.com/600x750/?Bottega+Veneta++Accessories,https://www.google.com/search?q=Bottega+Veneta+Limited+Watch
-P-1108,Apple Signature Handbag,Apple,Home > Appliances,Louis Vuitton,1133.79,801.19,29,https://source.unsplash.com/600x750/?Apple++Appliances,https://www.google.com/search?q=Apple+Signature+Handbag
-P-1109,Fendi Icon TV,Fendi,Home > Furniture,Ulta Beauty,1002.73,805.46,20,https://source.unsplash.com/600x750/?Fendi++Furniture,https://www.google.com/search?q=Fendi+Icon+TV
-P-1110,Michael Kors Signature Watch,Michael Kors,Costco > Snacks,Nordstrom,231.45,136.24,41,https://source.unsplash.com/600x750/?Michael+Kors++Snacks,https://www.nordstrom.com/sr?keyword=Michael+Kors+Signature+Watch
-P-1111,Sony Icon Airfryer,Sony,Electronics > Wearables,Versace,972.86,693.04,29,https://source.unsplash.com/600x750/?Sony++Wearables,https://www.google.com/search?q=Sony+Icon+Airfryer
-P-1112,Bottega Veneta Signature Handbag,Bottega Veneta,Men > Watches,Costco,934.8,582.05,38,https://source.unsplash.com/600x750/?Bottega+Veneta++Watches,https://www.costco.com/CatalogSearch?dept=All&keyword=Bottega+Veneta+Signature+Handbag
-P-1113,Estee Lauder Signature Jacket,Estee Lauder,Women > Jewelry,Saint Laurent,283.13,202.25,29,https://source.unsplash.com/600x750/?Estee+Lauder++Jewelry,https://www.google.com/search?q=Estee+Lauder+Signature+Jacket
-P-1114,Versace Ultra Perfume,Versace,Home > Furniture,Target,589.17,433.53,26,https://source.unsplash.com/600x750/?Versace++Furniture,https://www.google.com/search?q=Versace+Ultra+Perfume
-P-1115,Celine Limited Dress,Celine,Women > Shoes,Prada,627.68,404.45,36,https://source.unsplash.com/600x750/?Celine++Shoes,https://www.google.com/search?q=Celine+Limited+Dress
-P-1116,Dyson Ultra Watch,Dyson,Electronics > Phones,Bergdorf Goodman,584.91,520.4,11,https://source.unsplash.com/600x750/?Dyson++Phones,https://www.google.com/search?q=Dyson+Ultra+Watch
-P-1117,Dyson Classic Perfume,Dyson,Women > Handbags,Nike,1743.5,1214.09,30,https://source.unsplash.com/600x750/?Dyson++Handbags,https://www.google.com/search?q=Dyson+Classic+Perfume
-P-1118,Celine Classic Watch,Celine,Beauty > Fragrance,Target,908.91,521.48,43,https://source.unsplash.com/600x750/?Celine++Fragrance,https://www.google.com/search?q=Celine+Classic+Watch
-P-1119,Tory Burch Classic Shoes,Tory Burch,Women > Shoes,Saks Fifth Avenue,831.38,440.33,47,https://source.unsplash.com/600x750/?Tory+Burch++Shoes,https://www.saksfifthavenue.com/search?q=Tory+Burch+Classic+Shoes
-P-1120,Louis Vuitton Signature Handbag,Louis Vuitton,Costco > Snacks,Apple Store,1900.8,1015.16,47,https://source.unsplash.com/600x750/?Louis+Vuitton++Snacks,https://www.apple.com/us/search/Louis+Vuitton+Signature+Handbag
-P-1121,Nike Signature Airfryer,Nike,Costco > Essentials,Ulta Beauty,1232.32,1005.94,18,https://source.unsplash.com/600x750/?Nike++Essentials,https://www.google.com/search?q=Nike+Signature+Airfryer
-P-1122,Coach Icon Watch,Coach,Beauty > Makeup,Amazon,629.84,463.19,26,https://source.unsplash.com/600x750/?Coach++Makeup,https://www.amazon.com/s?k=Coach+Icon+Watch
-P-1123,Adidas Signature Jacket,Adidas,Electronics > TVs,Bloomingdale's,1238.78,986.11,20,https://source.unsplash.com/600x750/?Adidas++TVs,https://www.bloomingdales.com/shop/featured/Adidas+Signature+Jacket
-P-1124,Burberry Classic Shoes,Burberry,Home > Kitchen,Saks Fifth Avenue,356.26,202.9,43,https://source.unsplash.com/600x750/?Burberry++Kitchen,https://www.saksfifthavenue.com/search?q=Burberry+Classic+Shoes
-P-1125,Chanel Classic Jacket,Chanel,Beauty > Skincare,Amazon,1394.27,959.21,31,https://source.unsplash.com/600x750/?Chanel++Skincare,https://www.amazon.com/s?k=Chanel+Classic+Jacket
-P-1126,Celine Signature Watch,Celine,Home > Appliances,Burberry,1420.83,968.46,32,https://source.unsplash.com/600x750/?Celine++Appliances,https://www.google.com/search?q=Celine+Signature+Watch
-P-1127,Tom Ford Beauty Signature Laptop,Tom Ford Beauty,Costco > Snacks,Nike,1200.09,985.95,18,https://source.unsplash.com/600x750/?Tom+Ford+Beauty++Snacks,https://www.google.com/search?q=Tom+Ford+Beauty+Signature+Laptop
-P-1128,Dior Signature Handbag,Dior,Electronics > Phones,Gucci,1312.89,1133.5,14,https://source.unsplash.com/600x750/?Dior++Phones,https://www.google.com/search?q=Dior+Signature+Handbag
-P-1129,Prada Limited TV,Prada,Women > Accessories,Burberry,1210.34,1004.21,17,https://source.unsplash.com/600x750/?Prada++Accessories,https://www.google.com/search?q=Prada+Limited+TV
-P-1130,Dior Limited Airfryer,Dior,Beauty > Makeup,Costco,642.98,425.01,34,https://source.unsplash.com/600x750/?Dior++Makeup,https://www.costco.com/CatalogSearch?dept=All&keyword=Dior+Limited+Airfryer
-P-1131,Nike Icon Serum,Nike,Beauty > Fragrance,Amazon,206.86,106.73,48,https://source.unsplash.com/600x750/?Nike++Fragrance,https://www.amazon.com/s?k=Nike+Icon+Serum
-P-1132,Apple Ultra Perfume,Apple,Men > Pants,Nordstrom,228.09,201.81,12,https://source.unsplash.com/600x750/?Apple++Pants,https://www.nordstrom.com/sr?keyword=Apple+Ultra+Perfume
-P-1133,Chanel Signature TV,Chanel,Costco > Essentials,Adidas,1651.77,1206.62,27,https://source.unsplash.com/600x750/?Chanel++Essentials,https://www.google.com/search?q=Chanel+Signature+TV
-P-1134,Lululemon Ultra Laptop,Lululemon,Electronics > Headphones,Amazon,1836.34,1051.48,43,https://source.unsplash.com/600x750/?Lululemon++Headphones,https://www.amazon.com/s?k=Lululemon+Ultra+Laptop
-P-1135,Samsung Icon Serum,Samsung,Costco > Household,Target,1939.66,1334.49,31,https://source.unsplash.com/600x750/?Samsung++Household,https://www.google.com/search?q=Samsung+Icon+Serum
-P-1136,Bottega Veneta Icon Watch,Bottega Veneta,Home > Kitchen,Neiman Marcus,1722.58,1088.54,37,https://source.unsplash.com/600x750/?Bottega+Veneta++Kitchen,https://www.neimanmarcus.com/s/Bottega+Veneta+Icon+Watch
-P-1137,Sony Limited Serum,Sony,Men > Accessories,Best Buy,121.56,65.06,46,https://source.unsplash.com/600x750/?Sony++Accessories,https://www.bestbuy.com/site/searchpage.jsp?st=Sony+Limited+Serum
-P-1138,Dior Classic Airfryer,Dior,Costco > Essentials,Sephora,1736.58,1441.31,17,https://source.unsplash.com/600x750/?Dior++Essentials,https://www.google.com/search?q=Dior+Classic+Airfryer
-P-1139,Michael Kors Icon TV,Michael Kors,Beauty > Skincare,Bloomingdale's,415.79,268.06,36,https://source.unsplash.com/600x750/?Michael+Kors++Skincare,https://www.bloomingdales.com/shop/featured/Michael+Kors+Icon+TV
-P-1140,Lancome Limited TV,Lancome,Women > Tops,Prada,570.76,315.29,45,https://source.unsplash.com/600x750/?Lancome++Tops,https://www.google.com/search?q=Lancome+Limited+TV
-P-1141,Dyson Signature Shoes,Dyson,Beauty > Fragrance,Neiman Marcus,106.3,79.94,25,https://source.unsplash.com/600x750/?Dyson++Fragrance,https://www.neimanmarcus.com/s/Dyson+Signature+Shoes
-P-1142,Celine Classic TV,Celine,Electronics > Phones,Nordstrom,1126.89,605.46,46,https://source.unsplash.com/600x750/?Celine++Phones,https://www.nordstrom.com/sr?keyword=Celine+Classic+TV
-P-1143,Dior Ultra Watch,Dior,Electronics > Headphones,Bergdorf Goodman,1021.83,803.81,21,https://source.unsplash.com/600x750/?Dior++Headphones,https://www.google.com/search?q=Dior+Ultra+Watch
-P-1144,Kate Spade Ultra Shoes,Kate Spade,Costco > Household,Target,1961.48,1171.97,40,https://source.unsplash.com/600x750/?Kate+Spade++Household,https://www.google.com/search?q=Kate+Spade+Ultra+Shoes
-P-1145,Coach Classic Watch,Coach,Women > Jewelry,Sony Store,1041.07,886.71,15,https://source.unsplash.com/600x750/?Coach++Jewelry,https://www.google.com/search?q=Coach+Classic+Watch
-P-1146,Lancome Limited Dress,Lancome,Costco > Snacks,Ulta Beauty,712.76,580.96,18,https://source.unsplash.com/600x750/?Lancome++Snacks,https://www.google.com/search?q=Lancome+Limited+Dress
-P-1147,Celine Icon Shoes,Celine,Home > Furniture,Burberry,1683.08,1231.96,27,https://source.unsplash.com/600x750/?Celine++Furniture,https://www.google.com/search?q=Celine+Icon+Shoes
-P-1148,Michael Kors Ultra Laptop,Michael Kors,Electronics > Phones,Target,722.99,521.11,28,https://source.unsplash.com/600x750/?Michael+Kors++Phones,https://www.google.com/search?q=Michael+Kors+Ultra+Laptop
-P-1149,Michael Kors Icon Jacket,Michael Kors,Men > Shoes,Prada,1962.51,1168.72,40,https://source.unsplash.com/600x750/?Michael+Kors++Shoes,https://www.google.com/search?q=Michael+Kors+Icon+Jacket
-P-1150,Lancome Icon Laptop,Lancome,Beauty > Skincare,Bloomingdale's,670.44,462.06,31,https://source.unsplash.com/600x750/?Lancome++Skincare,https://www.bloomingdales.com/shop/featured/Lancome+Icon+Laptop
-P-1151,Sony Classic Shoes,Sony,Costco > Snacks,Nike,1962.6,1370.15,30,https://source.unsplash.com/600x750/?Sony++Snacks,https://www.google.com/search?q=Sony+Classic+Shoes
-P-1152,Lululemon Icon Handbag,Lululemon,Electronics > Wearables,Saint Laurent,1745.92,1483.47,15,https://source.unsplash.com/600x750/?Lululemon++Wearables,https://www.google.com/search?q=Lululemon+Icon+Handbag
-P-1153,Lululemon Signature Handbag,Lululemon,Beauty > Makeup,Nordstrom,1458.77,968.61,34,https://source.unsplash.com/600x750/?Lululemon++Makeup,https://www.nordstrom.com/sr?keyword=Lululemon+Signature+Handbag
-P-1154,Tory Burch Classic Serum,Tory Burch,Costco > Snacks,Louis Vuitton,710.19,551.88,22,https://source.unsplash.com/600x750/?Tory+Burch++Snacks,https://www.google.com/search?q=Tory+Burch+Classic+Serum
-P-1155,Sony Icon Airfryer,Sony,Sports > Fitness,Best Buy,791.02,495.7,37,https://source.unsplash.com/600x750/?Sony++Fitness,https://www.bestbuy.com/site/searchpage.jsp?st=Sony+Icon+Airfryer
-P-1156,Prada Limited Jacket,Prada,Electronics > TVs,Saks Fifth Avenue,507.8,392.92,23,https://source.unsplash.com/600x750/?Prada++TVs,https://www.saksfifthavenue.com/search?q=Prada+Limited+Jacket
-P-1157,Estee Lauder Classic TV,Estee Lauder,Women > Bottoms,Ulta Beauty,1957.76,1574.33,20,https://source.unsplash.com/600x750/?Estee+Lauder++Bottoms,https://www.google.com/search?q=Estee+Lauder+Classic+TV
-P-1158,Saint Laurent Classic Watch,Saint Laurent,Home > Appliances,Burberry,1811.68,939.17,48,https://source.unsplash.com/600x750/?Saint+Laurent++Appliances,https://www.google.com/search?q=Saint+Laurent+Classic+Watch
-P-1159,Valentino Ultra Shoes,Valentino,Men > Watches,Ulta Beauty,333.86,237.86,29,https://source.unsplash.com/600x750/?Valentino++Watches,https://www.google.com/search?q=Valentino+Ultra+Shoes
-P-1160,Saint Laurent Signature TV,Saint Laurent,Women > Accessories,Saks Fifth Avenue,1238.51,808.77,35,https://source.unsplash.com/600x750/?Saint+Laurent++Accessories,https://www.saksfifthavenue.com/search?q=Saint+Laurent+Signature+TV
-P-1161,Adidas Limited Dress,Adidas,Women > Handbags,Gucci,949.24,571.05,40,https://source.unsplash.com/600x750/?Adidas++Handbags,https://www.google.com/search?q=Adidas+Limited+Dress
-P-1162,Tom Ford Beauty Icon Serum,Tom Ford Beauty,Beauty > Makeup,Burberry,1371.34,772.33,44,https://source.unsplash.com/600x750/?Tom+Ford+Beauty++Makeup,https://www.google.com/search?q=Tom+Ford+Beauty+Icon+Serum
-P-1163,Adidas Icon Watch,Adidas,Men > Jackets,Nike,1925.96,1494.79,22,https://source.unsplash.com/600x750/?Adidas++Jackets,https://www.google.com/search?q=Adidas+Icon+Watch
-P-1164,Versace Limited Perfume,Versace,Men > Accessories,Target,257.97,168.34,35,https://source.unsplash.com/600x750/?Versace++Accessories,https://www.google.com/search?q=Versace+Limited+Perfume
-P-1165,Celine Icon Watch,Celine,Home > Appliances,Burberry,92.78,77.19,17,https://source.unsplash.com/600x750/?Celine++Appliances,https://www.google.com/search?q=Celine+Icon+Watch
-P-1166,Chanel Ultra TV,Chanel,Electronics > Wearables,Adidas,1567.71,1394.39,11,https://source.unsplash.com/600x750/?Chanel++Wearables,https://www.google.com/search?q=Chanel+Ultra+TV
-P-1167,Celine Signature Perfume,Celine,Costco > Essentials,Gucci,1233.78,790.76,36,https://source.unsplash.com/600x750/?Celine++Essentials,https://www.google.com/search?q=Celine+Signature+Perfume
-P-1168,Burberry Signature Handbag,Burberry,Home > Kitchen,Home Depot,1546.57,1194.48,23,https://source.unsplash.com/600x750/?Burberry++Kitchen,https://www.google.com/search?q=Burberry+Signature+Handbag
-P-1169,Samsung Ultra Serum,Samsung,Electronics > Headphones,Bloomingdale's,652.42,441.25,32,https://source.unsplash.com/600x750/?Samsung++Headphones,https://www.bloomingdales.com/shop/featured/Samsung+Ultra+Serum
-P-1170,Estee Lauder Icon Shoes,Estee Lauder,Women > Handbags,Saks Fifth Avenue,1823.77,1150.23,37,https://source.unsplash.com/600x750/?Estee+Lauder++Handbags,https://www.saksfifthavenue.com/search?q=Estee+Lauder+Icon+Shoes
-P-1171,Versace Ultra Watch,Versace,Women > Handbags,Best Buy,1759.1,1136.98,35,https://source.unsplash.com/600x750/?Versace++Handbags,https://www.bestbuy.com/site/searchpage.jsp?st=Versace+Ultra+Watch
-P-1172,Saint Laurent Limited Handbag,Saint Laurent,Men > Pants,Target,1936.4,1196.8,38,https://source.unsplash.com/600x750/?Saint+Laurent++Pants,https://www.google.com/search?q=Saint+Laurent+Limited+Handbag
-P-1173,Michael Kors Icon Airfryer,Michael Kors,Women > Bottoms,Bergdorf Goodman,1520.6,897.53,41,https://source.unsplash.com/600x750/?Michael+Kors++Bottoms,https://www.google.com/search?q=Michael+Kors+Icon+Airfryer
-P-1174,Valentino Icon Serum,Valentino,Women > Bottoms,Sephora,77.14,55.13,29,https://source.unsplash.com/600x750/?Valentino++Bottoms,https://www.google.com/search?q=Valentino+Icon+Serum
-P-1175,Sony Limited Handbag,Sony,Home > Furniture,Adidas,561.21,366.14,35,https://source.unsplash.com/600x750/?Sony++Furniture,https://www.google.com/search?q=Sony+Limited+Handbag
-P-1176,Sony Ultra Serum,Sony,Men > Shirts,Target,98.8,84.34,15,https://source.unsplash.com/600x750/?Sony++Shirts,https://www.google.com/search?q=Sony+Ultra+Serum
-P-1177,Apple Limited Laptop,Apple,Men > Shirts,Nike,173.27,143.73,17,https://source.unsplash.com/600x750/?Apple++Shirts,https://www.google.com/search?q=Apple+Limited+Laptop
-P-1178,Dior Icon Handbag,Dior,Women > Handbags,Bloomingdale's,1895.21,1178.34,38,https://source.unsplash.com/600x750/?Dior++Handbags,https://www.bloomingdales.com/shop/featured/Dior+Icon+Handbag
-P-1179,Dior Ultra Laptop,Dior,Men > Shirts,Best Buy,314.54,214.35,32,https://source.unsplash.com/600x750/?Dior++Shirts,https://www.bestbuy.com/site/searchpage.jsp?st=Dior+Ultra+Laptop
-P-1180,Adidas Classic TV,Adidas,Home > Furniture,Home Depot,351.32,233.96,33,https://source.unsplash.com/600x750/?Adidas++Furniture,https://www.google.com/search?q=Adidas+Classic+TV
-P-1181,Apple Icon TV,Apple,Beauty > Skincare,Louis Vuitton,113.8,73.77,35,https://source.unsplash.com/600x750/?Apple++Skincare,https://www.google.com/search?q=Apple+Icon+TV
-P-1182,Fendi Ultra Serum,Fendi,Sports > Fitness,Versace,243.74,188.72,23,https://source.unsplash.com/600x750/?Fendi++Fitness,https://www.google.com/search?q=Fendi+Ultra+Serum
-P-1183,Prada Icon Handbag,Prada,Men > Accessories,Louis Vuitton,420.13,230.59,45,https://source.unsplash.com/600x750/?Prada++Accessories,https://www.google.com/search?q=Prada+Icon+Handbag
-P-1184,Sony Classic Serum,Sony,Women > Jewelry,Nike,1297.01,1152.31,11,https://source.unsplash.com/600x750/?Sony++Jewelry,https://www.google.com/search?q=Sony+Classic+Serum
-P-1185,Fendi Ultra Jacket,Fendi,Women > Handbags,Apple Store,450.15,374.49,17,https://source.unsplash.com/600x750/?Fendi++Handbags,https://www.apple.com/us/search/Fendi+Ultra+Jacket
-P-1186,Adidas Ultra Dress,Adidas,Women > Jewelry,Gucci,690.69,386.11,44,https://source.unsplash.com/600x750/?Adidas++Jewelry,https://www.google.com/search?q=Adidas+Ultra+Dress
-P-1187,Burberry Signature Handbag,Burberry,Sports > Fitness,Bergdorf Goodman,1975.68,1414.76,28,https://source.unsplash.com/600x750/?Burberry++Fitness,https://www.google.com/search?q=Burberry+Signature+Handbag
-P-1188,Sony Signature Perfume,Sony,Sports > Fitness,Nordstrom,307.02,197.51,36,https://source.unsplash.com/600x750/?Sony++Fitness,https://www.nordstrom.com/sr?keyword=Sony+Signature+Perfume
-P-1189,Bottega Veneta Icon Airfryer,Bottega Veneta,Women > Dresses,Chanel,567.47,312.51,45,https://source.unsplash.com/600x750/?Bottega+Veneta++Dresses,https://www.google.com/search?q=Bottega+Veneta+Icon+Airfryer
-P-1190,Dior Ultra Perfume,Dior,Home > Furniture,Saks Fifth Avenue,978.68,793.91,19,https://source.unsplash.com/600x750/?Dior++Furniture,https://www.saksfifthavenue.com/search?q=Dior+Ultra+Perfume
-P-1191,Dior Ultra Watch,Dior,Beauty > Makeup,Macy's,482.02,359.61,25,https://source.unsplash.com/600x750/?Dior++Makeup,https://www.google.com/search?q=Dior+Ultra+Watch
-P-1192,Michael Kors Icon Laptop,Michael Kors,Electronics > Headphones,Nordstrom,168.61,116.61,31,https://source.unsplash.com/600x750/?Michael+Kors++Headphones,https://www.nordstrom.com/sr?keyword=Michael+Kors+Icon+Laptop
-P-1193,Sony Classic Serum,Sony,Women > Shoes,Target,1439.18,974.94,32,https://source.unsplash.com/600x750/?Sony++Shoes,https://www.google.com/search?q=Sony+Classic+Serum
-P-1194,Apple Ultra Airfryer,Apple,Women > Handbags,Saks Fifth Avenue,296.07,221.97,25,https://source.unsplash.com/600x750/?Apple++Handbags,https://www.saksfifthavenue.com/search?q=Apple+Ultra+Airfryer
-P-1195,Dyson Icon Airfryer,Dyson,Men > Shoes,Sephora,1989.52,1416.98,29,https://source.unsplash.com/600x750/?Dyson++Shoes,https://www.google.com/search?q=Dyson+Icon+Airfryer
-P-1196,Apple Ultra Jacket,Apple,Beauty > Skincare,Neiman Marcus,1596.54,871.34,45,https://source.unsplash.com/600x750/?Apple++Skincare,https://www.neimanmarcus.com/s/Apple+Ultra+Jacket
-P-1197,Kate Spade Icon Laptop,Kate Spade,Beauty > Makeup,Gucci,856.94,712.09,17,https://source.unsplash.com/600x750/?Kate+Spade++Makeup,https://www.google.com/search?q=Kate+Spade+Icon+Laptop
-P-1198,Estee Lauder Limited Shoes,Estee Lauder,Women > Shoes,Saint Laurent,882.19,675.8,23,https://source.unsplash.com/600x750/?Estee+Lauder++Shoes,https://www.google.com/search?q=Estee+Lauder+Limited+Shoes
-P-1199,Sony Icon Handbag,Sony,Beauty > Fragrance,Saks Fifth Avenue,227.89,121.73,47,https://source.unsplash.com/600x750/?Sony++Fragrance,https://www.saksfifthavenue.com/search?q=Sony+Icon+Handbag
+import csv
+from pathlib import Path
+
+# -----------------------------------------
+# Luxury-only product generator for WishDrop
+# -----------------------------------------
+OUT_PATH = Path("data/sample_products.csv")
+
+
+BRANDS = [
+    {
+        "brand": "Prada",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Bergdorf Goodman", "Prada Boutique"],
+        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses", "Women > Jackets"]
+    },
+    {
+        "brand": "Gucci",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Nordstrom", "Gucci Boutique"],
+        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses", "Accessories > Belts"]
+    },
+    {
+        "brand": "Louis Vuitton",
+        "stores": ["Louis Vuitton", "Saks Fifth Avenue", "Neiman Marcus"],
+        "categories": ["Women > Bags", "Accessories > Wallets", "Women > Shoes"]
+    },
+    {
+        "brand": "Chanel",
+        "stores": ["Chanel Boutique", "Nordstrom"],
+        "categories": ["Women > Bags", "Women > Shoes", "Beauty > Fragrance", "Beauty > Makeup"]
+    },
+    {
+        "brand": "Dior",
+        "stores": ["Dior Boutique", "Sephora", "Saks Fifth Avenue"],
+        "categories": ["Beauty > Fragrance", "Beauty > Makeup", "Women > Dresses"]
+    },
+    {
+        "brand": "Burberry",
+        "stores": ["Nordstrom", "Saks Fifth Avenue", "Burberry Boutique"],
+        "categories": ["Women > Jackets", "Men > Jackets", "Women > Bags"]
+    },
+    {
+        "brand": "Saint Laurent",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Bergdorf Goodman"],
+        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses"]
+    },
+    {
+        "brand": "Fendi",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
+        "categories": ["Women > Bags", "Accessories > Wallets", "Women > Shoes"]
+    },
+    {
+        "brand": "Valentino",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Nordstrom"],
+        "categories": ["Women > Shoes", "Women > Dresses", "Women > Bags"]
+    },
+    {
+        "brand": "Givenchy",
+        "stores": ["Saks Fifth Avenue", "Sephora"],
+        "categories": ["Beauty > Fragrance", "Women > Bags", "Women > Shoes"]
+    },
+    {
+        "brand": "Bottega Veneta",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
+        "categories": ["Women > Bags", "Women > Shoes"]
+    },
+    {
+        "brand": "Celine",
+        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
+        "categories": ["Women > Bags", "Women > Dresses"]
+    }
+]
+
+# Simple style words so names look more human
+STYLES = [
+    "Classic", "Signature", "Runway", "Icon", "Limited",
+    "Mini", "Large", "Quilted", "Leather", "Canvas"
+]
+
+# -----------------------------------------
+# Helper functions
+# -----------------------------------------
+def base_price_for(category: str) -> float:
+    """Return a realistic MSRP given the category."""
+    if "Bags" in category or "Wallets" in category:
+        return 2200.0
+    if "Shoes" in category:
+        return 950.0
+    if "Dresses" in category or "Jackets" in category:
+        return 1800.0
+    if "Fragrance" in category:
+        return 165.0
+    if "Makeup" in category:
+        return 75.0
+    if "Belts" in category:
+        return 650.0
+    return 1200.0
+
+
+def price_with_discount(msrp: float, discount_pct: int) -> float:
+    return round(msrp * (1 - discount_pct / 100.0), 2)
+
+
+def image_url_for(brand: str, category: str) -> str:
+    """
+    Use Unsplash source images with a consistent query.
+    This stays abstract but looks visually right.
+    """
+    query_parts = [brand]
+    if "Bags" in category or "Wallets" in category:
+        query_parts.append("luxury bag")
+    elif "Shoes" in category:
+        query_parts.append("designer shoes")
+    elif "Dresses" in category:
+        query_parts.append("designer dress")
+    elif "Jackets" in category:
+        query_parts.append("trench coat")
+    elif "Fragrance" in category:
+        query_parts.append("perfume bottle")
+    elif "Makeup" in category:
+        query_parts.append("makeup flatlay")
+    elif "Belts" in category:
+        query_parts.append("designer belt")
+    else:
+        query_parts.append("fashion")
+
+    query = "+".join(q.replace(" ", "+") for q in query_parts)
+    return f"https://source.unsplash.com/600x750/?{query}"
+
+
+def product_url_for(store: str, name: str) -> str:
+    """Fake but plausible product search URL."""
+    base = {
+        "Saks Fifth Avenue": "https://www.saksfifthavenue.com/search?keyword=",
+        "Neiman Marcus": "https://www.neimanmarcus.com/search.jsp?Ntt=",
+        "Bergdorf Goodman": "https://www.bergdorfgoodman.com/search.jsp?Ntt=",
+        "Nordstrom": "https://www.nordstrom.com/sr?keyword=",
+        "Bloomingdale's": "https://www.bloomingdales.com/shop/featured/",
+        "Prada Boutique": "https://www.prada.com/search?q=",
+        "Gucci Boutique": "https://www.gucci.com/us/en/search/?q=",
+        "Louis Vuitton": "https://us.louisvuitton.com/eng-us/search/",
+        "Chanel Boutique": "https://www.chanel.com/us/search/?q=",
+        "Dior Boutique": "https://www.dior.com/en_us/search?q=",
+        "Burberry Boutique": "https://us.burberry.com/search/?q=",
+        "Sephora": "https://www.sephora.com/search?keyword="
+    }.get(store, "https://www.google.com/search?q=")
+
+    q = name.replace(" ", "+")
+    return f"{base}{q}"
+
+
+# -----------------------------------------
+# Build 100 luxury products
+# -----------------------------------------
+def build_products(max_items: int = 100):
+    rows = []
+    next_id = 1000
+
+    for brand_info in BRANDS:
+        brand = brand_info["brand"]
+        for store in brand_info["stores"]:
+            for category in brand_info["categories"]:
+                if len(rows) >= max_items:
+                    break
+
+                # Create 1–2 variations per combo
+                for style in STYLES[:2]:
+                    if len(rows) >= max_items:
+                        break
+
+                    next_id += 1
+                    pid = f"L-{next_id}"
+
+                    # Build a nice name
+                    base_name = category.split(">")[-1].strip()  # e.g. "Bags"
+                    if "Bags" in base_name:
+                        item_word = "Bag"
+                    elif "Shoes" in base_name:
+                        item_word = "Heels"
+                    elif "Dresses" in base_name:
+                        item_word = "Dress"
+                    elif "Jackets" in base_name:
+                        item_word = "Jacket"
+                    elif "Wallets" in base_name:
+                        item_word = "Wallet"
+                    elif "Belts" in base_name:
+                        item_word = "Belt"
+                    elif "Fragrance" in base_name:
+                        item_word = "Eau de Parfum"
+                    elif "Makeup" in base_name:
+                        item_word = "Lipstick"
+                    else:
+                        item_word = base_name
+
+                    name = f"{brand} {style} {item_word}"
+
+                    msrp = base_price_for(category)
+
+                    # choose a realistic discount 15–45%
+                    discount_pct = 15 + ((next_id * 7) % 31)  # deterministic but varied
+                    price = price_with_discount(msrp, discount_pct)
+
+                    img = image_url_for(brand, category)
+                    url = product_url_for(store, name)
+
+                    rows.append({
+                        "id": pid,
+                        "name": name,
+                        "brand": brand,
+                        "category": category,
+                        "store": store,
+                        "msrp": round(msrp, 2),
+                        "price": price,
+                        "discount_pct": discount_pct,
+                        "image_url": img,
+                        "product_url": url,
+                    })
+
+                if len(rows) >= max_items:
+                    break
+            if len(rows) >= max_items:
+                break
+        if len(rows) >= max_items:
+            break
+
+    return rows
+
+
+def main():
+    rows = build_products(max_items=100)
+
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with OUT_PATH.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=[
+                "id",
+                "name",
+                "brand",
+                "category",
+                "store",
+                "msrp",
+                "price",
+                "discount_pct",
+                "image_url",
+                "product_url",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"Wrote {len(rows)} luxury items to {OUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
