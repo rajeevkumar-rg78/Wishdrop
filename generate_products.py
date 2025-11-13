@@ -1,132 +1,52 @@
-import csv, random
-from pathlib import Path
+import pandas as pd
+import random
 
-# ----- Full Luxury + Retail Category List -----
-categories = [
-    # Women
-    "Women > Dresses", "Women > Tops", "Women > Bottoms",
-    "Women > Shoes", "Women > Handbags", "Women > Accessories",
-    "Women > Jewelry",
-
-    # Men
-    "Men > Shirts", "Men > Pants", "Men > Jackets",
-    "Men > Shoes", "Men > Watches", "Men > Accessories",
-
-    # Beauty
-    "Beauty > Skincare", "Beauty > Makeup", "Beauty > Fragrance",
-
-    # Electronics
-    "Electronics > Laptops", "Electronics > Phones",
-    "Electronics > Wearables", "Electronics > TVs",
-    "Electronics > Headphones",
-
-    # Home + Costco
-    "Home > Kitchen", "Home > Appliances", "Home > Furniture",
-    "Costco > Essentials", "Costco > Snacks", "Costco > Household",
-
-    # Sports
-    "Sports > Fitness", "Sports > Equipment"
-]
-
-# ----- Stores -----
-stores = [
-    # Luxury Retailers
-    "Nordstrom", "Bloomingdale's", "Saks Fifth Avenue",
-    "Neiman Marcus", "Bergdorf Goodman",
-
-    # Luxury Brands
-    "Chanel", "Prada", "Gucci", "Louis Vuitton",
-    "Burberry", "Saint Laurent", "Versace",
-
-    # Beauty
-    "Sephora", "Ulta Beauty",
-
-    # Retail
-    "Amazon", "Target", "Macy's",
-
-    # Electronics
-    "Best Buy", "Apple Store", "Sony Store",
-
-    # Sportswear
-    "Nike", "Adidas",
-
-    # Wholesale
-    "Costco", "Home Depot"
-]
-
-# ----- Luxury Brands -----
 brands = [
-    "Chanel", "Prada", "Gucci", "Dior", "Louis Vuitton",
-    "Saint Laurent", "Versace", "Fendi", "Burberry", "Celine",
-    "Bottega Veneta", "Valentino",
-
-    "Coach", "Kate Spade", "Michael Kors", "Tory Burch",
-
-    "Lululemon", "Nike", "Adidas",
-
-    "Apple", "Samsung", "Sony", "Dyson",
-
-    "Estee Lauder", "Lancome", "Tom Ford Beauty"
+    "Louis Vuitton","Gucci","Prada","Chanel","Burberry","Fendi",
+    "Versace","Dior","Balenciaga","Givenchy","Valentino",
+    "YSL","Bottega Veneta","Ferragamo","Moncler"
 ]
 
-# ----- Build Items -----
-def get_image(name, brand, category):
-    query = f"{brand} {category.split('>')[-1]}".replace(" ", "+")
-    return f"https://source.unsplash.com/600x750/?{query}"
+stores = [
+    "Nordstrom","Bloomingdale's","Saks Fifth Avenue","Neiman Marcus",
+    "Bergdorf Goodman","Chanel","Prada","Gucci","Louis Vuitton",
+    "Burberry","Sephora","Ulta Beauty","Macy's","Amazon","Target",
+    "Best Buy","Apple Store","Costco","Home Depot"
+]
 
-def product_url(store, name):
-    base = {
-        "Amazon": "https://www.amazon.com/s?k=",
-        "Nordstrom": "https://www.nordstrom.com/sr?keyword=",
-        "Bloomingdale's": "https://www.bloomingdales.com/shop/featured/",
-        "Saks Fifth Avenue": "https://www.saksfifthavenue.com/search?q=",
-        "Neiman Marcus": "https://www.neimanmarcus.com/s/",
-        "Costco": "https://www.costco.com/CatalogSearch?dept=All&keyword=",
-        "Best Buy": "https://www.bestbuy.com/site/searchpage.jsp?st=",
-        "Apple Store": "https://www.apple.com/us/search/",
-    }.get(store, "https://www.google.com/search?q=")
-    return f"{base}{name.replace(' ', '+')}"
+categories = [
+    "Women > Shoes","Women > Handbags","Women > Dresses",
+    "Women > Jewelry","Men > Shoes","Men > Shirts",
+    "Men > Jackets","Beauty > Makeup","Beauty > Fragrance",
+    "Electronics > Wearables","Electronics > Headphones",
+    "Home > Decor","Sports > Fitness"
+]
 
-rows = []
-random.seed(42)
-
-for i in range(200):  # 200 luxury products
+def create_item(i):
     brand = random.choice(brands)
-    cat = random.choice(categories)
     store = random.choice(stores)
+    category = random.choice(categories)
 
-    msrp = round(random.uniform(50, 2000), 2)
-    price = round(msrp * random.uniform(0.5, 0.9), 2)
-    discount = round((1 - price/msrp) * 100)
+    msrp = random.randint(150, 2500)
+    discount_pct = random.choice([10, 15, 20, 25, 30, 35, 40, 50, 60])
+    price = round(msrp * (1 - discount_pct/100), 2)
 
-    name = (
-        f"{brand} {random.choice(['Classic','Signature','Limited','Icon','Ultra'])} "
-        f"{random.choice(['Dress','Handbag','Shoes','Jacket','Watch','Serum','Laptop','TV','Airfryer','Perfume'])}"
-    )
-
-    img = get_image(name, brand, cat)
-    url = product_url(store, name)
-
-    rows.append({
+    return {
         "id": f"P-{1000+i}",
-        "name": name,
+        "name": f"{brand} {random.choice(['Signature','Classic','Limited','Ultra','Icon'])} {random.choice(['Bag','Shoes','Watch','Jacket','Dress','Sneakers','Wallet','Backpack','Perfume','Laptop','Mixer'])}",
         "brand": brand,
-        "category": cat,
+        "category": category,
         "store": store,
         "msrp": msrp,
         "price": price,
-        "discount_pct": discount,
-        "image_url": img,
-        "product_url": url
-    })
+        "discount_pct": discount_pct,
+        "image_url": "https://source.unsplash.com/800x1000/?luxury,fashion,product",
+        "product_url": "https://example.com/product"
+    }
 
-# ----- Save File -----
-output = Path("data/sample_products.csv")
-output.parent.mkdir(exist_ok=True)
+items = [create_item(i) for i in range(100)]
+df = pd.DataFrame(items)
 
-with open(output, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-    writer.writeheader()
-    writer.writerows(rows)
+df.to_csv("data/sample_products.csv", index=False)
 
-print("Luxury sample_products.csv generated successfully!")
+print("Wrote 100 luxury products → data/sample_products.csv")
