@@ -2,38 +2,11 @@ import streamlit as st
 import pandas as pd
 from utils.storage import save_board, get_board
 from utils.price import simulate_price_history, buy_or_wait_signal
-from utils.storage import list_profiles
 
-# --------------------------------------------
-# GLOBAL SCROLL FIX (selectbox & multiselect)
-# --------------------------------------------
-st.markdown("""
-<style>
-div[data-baseweb="select"] > div {
-    max-height: 250px !important;
-    overflow-y: auto !important;
-}
-div[role="listbox"] {
-    max-height: 250px !important;
-    overflow-y: auto !important;
-}
-div[data-baseweb="popover"] {
-    max-height: 250px !important;
-    overflow-y: auto !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# --------------------------------------------
-# HEADER
-# --------------------------------------------
 st.header("❤️ Boards & Alerts")
 
 products = pd.read_csv("data/sample_products.csv")
 
-# --------------------------------------------
-# STORE ICONS
-# --------------------------------------------
 STORE_ICONS = {
     "Nordstrom": "🖤",
     "Bloomingdale's": "🛍️",
@@ -56,56 +29,47 @@ STORE_ICONS = {
     "Home Depot": "🛠️"
 }
 
-# --------------------------------------------
-# USER PROFILE SELECTOR (DROPDOWN instead of typing)
-# --------------------------------------------
-profiles = list_profiles()
-user = st.sidebar.selectbox("Active Profile", ["Select"] + profiles)
+# ---------------- Load board ----------------
+user = st.sidebar.text_input("Profile name to load board", placeholder="e.g. raj")
 
-if user == "Select":
-    st.info("Select your profile in the left sidebar.")
+if not user:
+    st.info("Enter your profile name to load your saved board.")
     st.stop()
 
-# --------------------------------------------
-# LOAD BOARD DATA
-# --------------------------------------------
-board_data = get_board(user)
+board = get_board(user)
 
 if "saved" not in st.session_state:
-    st.session_state["saved"] = list(board_data.get("saved", []))
+    st.session_state["saved"] = set(board.get("saved", []))
 
 if "tracked" not in st.session_state:
-    st.session_state["tracked"] = dict(board_data.get("tracked", {}))
+    st.session_state["tracked"] = dict(board.get("tracked", {}))
 
-saved_ids = st.session_state["saved"]
-tracked_items = st.session_state["tracked"]
+saved_ids = list(st.session_state["saved"])
+tracked_items = dict(st.session_state["tracked"])
 
-# =====================================================
-# ⭐ SAVED ITEMS SECTION
-# =====================================================
+# ---------------- Saved Items ----------------
 st.subheader("⭐ Saved Items")
 
 if not saved_ids:
-    st.info("No saved items yet. Click ❤️ in Discover to save products.")
+    st.info("No saved items yet. Use ❤️ Save in Discover.")
 else:
-    cols = st.columns(2, gap="large")
+    cols = st.columns(2)
 
     for i, pid in enumerate(saved_ids):
         item = products[products["id"] == pid].iloc[0]
 
         with cols[i % 2]:
-            img = item["image_url"].replace("800x1000", "400x500")
+            img = item["image_url"].replace("800x1000", "500x650")
             st.image(img, use_container_width=True)
 
-            store_icon = STORE_ICONS.get(item["store"], "🛒")
+            icon = STORE_ICONS.get(item["store"], "🛒")
 
             st.markdown(f"### {item['name']}")
-            st.caption(f"{store_icon} {item['store']} • {item['brand']} • {item['category']}")
+            st.caption(f"{icon} {item['store']} • {item['brand']} • {item['category']}")
 
-            # PREMIUM PRICE FORMAT
             st.markdown(
                 f"""
-                <div style="font-size:18px; font-weight:600; margin-top:6px;">
+                <div style="font-size:18px; font-weight:600;">
                     <span style="color:#d00000;">${item['price']:.2f}</span>
                     &nbsp;&nbsp;
                     <span style="color:gray; text-decoration: line-through;">
@@ -118,62 +82,51 @@ else:
                 unsafe_allow_html=True
             )
 
-            if st.button("❌ Remove", key=f"remove_{pid}"):
+            if st.button(f"❌ Remove", key=f"rm_{pid}"):
                 st.session_state["saved"].remove(pid)
                 st.experimental_rerun()
 
-# =====================================================
-# 🔔 PRICE ALERTS
-# =====================================================
-
+# ---------------- Price Alerts ----------------
 st.subheader("🔔 Price Alerts")
 
 if not tracked_items:
-    st.info("No alerts set. Use 🔔 Track in Discover.")
+    st.info("You are not tracking any items.")
 else:
-    cols = st.columns(2, gap="large")
+    cols = st.columns(2)
 
     for i, (pid, threshold) in enumerate(tracked_items.items()):
         item = products[products["id"] == pid].iloc[0]
 
         with cols[i % 2]:
-            img = item["image_url"].replace("800x1000", "400x500")
+            img = item["image_url"].replace("800x1000", "500x650")
             st.image(img, use_container_width=True)
 
-            store_icon = STORE_ICONS.get(item["store"], "🛒")
-
+            icon = STORE_ICONS.get(item["store"], "🛒")
             st.markdown(f"### {item['name']}")
-            st.caption(f"{store_icon} {item['store']} • {item['brand']} • {item['category']}")
+            st.caption(f"{icon} {item['store']} • {item['brand']} • {item['category']}")
 
-            st.markdown(
-                f"**Current Price:** ${item['price']:.2f}  \n"
-                f"Alert triggers if price drops **{threshold}%** below today.",
-                unsafe_allow_html=True
-            )
+            st.write(f"Tracking item for **{threshold}% price drop**")
 
-            with st.expander("📉 Price Trend & AI Advice"):
-                series = simulate_price_history(item["price"], days=60)
-                st.line_chart(series, use_container_width=True)
+            with st.expander("📉 Price Trend"):
+                series = simulate_price_history(item["price"], 60)
+                st.line_chart(series)
 
                 rec, note = buy_or_wait_signal(series, item["price"])
-                st.markdown(f"**AI Suggestion: {rec}**")
+                st.markdown(f"**AI Recommendation: {rec}**")
                 st.caption(note)
 
-            if st.button("❌ Stop Tracking", key=f"stop_{pid}"):
+            if st.button(f"❌ Stop Tracking", key=f"stop_{pid}"):
                 del st.session_state["tracked"][pid]
                 st.experimental_rerun()
 
-# =====================================================
-# 💾 SAVE BOARD BUTTON
-# =====================================================
+# ---------------- Save Button ----------------
 st.sidebar.markdown("---")
-
 if st.sidebar.button("💾 Save Board"):
     save_board(
         user,
         {
-            "saved": st.session_state["saved"],
+            "saved": list(st.session_state["saved"]),
             "tracked": st.session_state["tracked"]
         }
     )
-    st.sidebar.success("Board saved successfully!")
+    st.sidebar.success("Board saved!")
