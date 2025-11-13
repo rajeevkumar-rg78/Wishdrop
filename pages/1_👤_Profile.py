@@ -6,193 +6,106 @@ st.header("👤 Profile")
 
 products = pd.read_csv("data/sample_products.csv")
 
-st.subheader("Select or Create Profile")
-existing = ["Create New"] + list_profiles()
-chosen = st.selectbox("Choose profile", existing, index=0)
+# --------------------------
+# SELECT PROFILE
+# --------------------------
 
-if chosen == "Create New":
-    st.subheader("Create Your Shopping Profile")
+profiles = ["Create New"] + list_profiles()
+chosen = st.selectbox("Choose a profile", profiles)
 
-    with st.form("profile_form", clear_on_submit=False):
-        name = st.text_input("Name", placeholder="e.g., Shalini")
-
-        # Basic Info
-        height_in = st.number_input("Height (inches)", min_value=50, max_value=80, value=64)
-        weight_lb = st.number_input("Weight (lbs)", min_value=80, max_value=300, value=140)
-
-        top_size = st.text_input("Top Size (e.g., S, M, L, 8)")
-        bottom_size = st.text_input("Bottom Size (e.g., 6, 8, 10)")
-        shoe_size = st.text_input("Shoe Size (e.g., 7.5)")
-
-        style = st.multiselect(
-            "Style Preferences",
-            ["Casual","Formal","Party","Business","Athleisure","Luxury","Designer"]
-        )
-
-        prefer_luxury = st.selectbox(
-            "Price Level",
-            ["Budget", "Mid-range", "Luxury Only"],
-            index=1
-        )
-
-        # -------------------- Luxury Brands --------------------
-        st.markdown("### 🌟 Favorite Brands (Luxury + Modern)")
-        brands = [
-            # Luxury Designers
-            "Chanel", "Prada", "Gucci", "Dior", "Louis Vuitton",
-            "Saint Laurent", "Burberry", "Fendi", "Versace",
-            "Valentino", "Celine", "Bottega Veneta",
-
-            # Contemporary
-            "Coach", "Kate Spade", "Michael Kors", "Tory Burch",
-            "Ralph Lauren",
-
-            # Beauty / Fragrance
-            "Chanel Beauty", "Dior Beauty", "Estee Lauder",
-            "Lancome", "Tom Ford Beauty", "Charlotte Tilbury",
-
-            # Active / Sports
-            "Lululemon", "Nike", "Adidas",
-
-            # Electronics
-            "Apple", "Samsung", "Sony", "Dyson"
-        ]
-
-        fav_brands = st.multiselect("Choose brands you like", brands)
-
-        # -------------------- Luxury & Retail Stores --------------------
-        st.markdown("### 🛍️ Preferred Stores (Luxury + Retail + Electronics)")
-
-        stores = [
-            # Luxury Retailers
-            "Nordstrom",
-            "Bloomingdale's",
-            "Saks Fifth Avenue",
-            "Neiman Marcus",
-            "Bergdorf Goodman",
-
-            # Luxury Brand Boutiques
-            "Chanel",
-            "Prada",
-            "Gucci",
-            "Louis Vuitton",
-            "Burberry",
-            "Saint Laurent",
-            "Versace",
-
-            # Beauty Stores
-            "Sephora",
-            "Ulta Beauty",
-
-            # General / Online Retail
-            "Macy's",
-            "Amazon",
-            "Target",
-
-            # Electronics
-            "Best Buy",
-            "Apple Store",
-            "Sony Store",
-
-            # Sportswear
-            "Nike",
-            "Adidas",
-
-            # Wholesale / Costco
-            "Costco",
-            "Home Depot"
-        ]
-
-        fav_stores = st.multiselect("Choose stores you like", stores)
-
-        # -------------------- Categories --------------------
-        st.markdown("### 🗂️ Favorite Categories (All Departments)")
-
-        cats = [
-            # Women
-            "Women > Dresses",
-            "Women > Tops",
-            "Women > Bottoms",
-            "Women > Shoes",
-            "Women > Handbags",
-            "Women > Accessories",
-            "Women > Jewelry",
-
-            # Men
-            "Men > Shirts",
-            "Men > Pants",
-            "Men > Jackets",
-            "Men > Shoes",
-            "Men > Watches",
-            "Men > Accessories",
-
-            # Beauty
-            "Beauty > Skincare",
-            "Beauty > Makeup",
-            "Beauty > Fragrance",
-
-            # Electronics
-            "Electronics > Laptops",
-            "Electronics > Phones",
-            "Electronics > Wearables",
-            "Electronics > TVs",
-            "Electronics > Headphones",
-
-            # Home & Costco-style
-            "Home > Kitchen",
-            "Home > Appliances",
-            "Home > Furniture",
-            "Costco > Essentials",
-            "Costco > Snacks",
-            "Costco > Household",
-
-            # Sports / Fitness
-            "Sports > Fitness",
-            "Sports > Equipment"
-        ]
-
-        fav_cats = st.multiselect("Choose categories", cats)
-
-        # -------------------- Notes --------------------
-        notes = st.text_area(
-            "Notes (fit, materials, colors, must-avoid, etc.)",
-            placeholder="e.g., Prefer silk, avoid wool; love pink, cream, navy"
-        )
-
-        # -------------------- Save --------------------
-        submitted = st.form_submit_button("Save Profile")
-        if submitted:
-            if not name.strip():
-                st.warning("Please enter a name before saving.")
-            else:
-                profile = {
-                    "height_in": height_in,
-                    "weight_lb": weight_lb,
-                    "sizes": {"top": top_size, "bottom": bottom_size, "shoe": shoe_size},
-                    "style": style,
-                    "price_pref": prefer_luxury,
-                    "brands": fav_brands,
-                    "stores": fav_stores,
-                    "categories": fav_cats,
-                    "notes": notes,
-                }
-
-                save_profile(name, profile)
-                st.success(f"Profile '{name}' saved!")
-                st.balloons()
-
-# Existing Profile View
-else:
-    st.subheader(f"Profile: {chosen}")
+# Load existing or empty default
+if chosen != "Create New":
     prof = get_profile(chosen)
-    st.json(prof)
+    default_name = chosen
+    default_height = prof.get("height_in", 64)
+    default_weight = prof.get("weight_lb", 140)
+    default_top = prof.get("sizes", {}).get("top", "")
+    default_bottom = prof.get("sizes", {}).get("bottom", "")
+    default_shoe = prof.get("sizes", {}).get("shoe", "")
+    default_style = prof.get("style", [])
+    default_price = prof.get("price_pref", "Mid-range")
+    default_brands = prof.get("brands", [])
+    default_stores = prof.get("stores", [])
+    default_cats = prof.get("categories", [])
+    default_notes = prof.get("notes", "")
+else:
+    default_name = ""
+    default_height = 64
+    default_weight = 140
+    default_top = ""
+    default_bottom = ""
+    default_shoe = ""
+    default_style = []
+    default_price = "Mid-range"
+    default_brands = []
+    default_stores = []
+    default_cats = []
+    default_notes = ""
 
-    colA, colB = st.columns([1, 1])
+# --------------------------
+# PROFILE FORM (Create or Edit)
+# --------------------------
 
-    with colA:
-        if st.button("Delete Profile", type="secondary"):
-            delete_profile(chosen)
-            st.success("Profile deleted. Reload to update.")
+st.subheader("Edit Profile" if chosen != "Create New" else "Create Profile")
 
-    with colB:
-        st.info("Profile data stored locally in `data/profiles.json`.")
+with st.form("profile_form"):
+    name = st.text_input("Name", value=default_name)
+    height_in = st.number_input("Height (inches)", min_value=50, max_value=80, value=default_height)
+    weight_lb = st.number_input("Weight (lbs)", min_value=80, max_value=300, value=default_weight)
+    top_size = st.text_input("Top Size (e.g., S, M, L, 8)", value=default_top)
+    bottom_size = st.text_input("Bottom Size (e.g., 6, 8, 10)", value=default_bottom)
+    shoe_size = st.text_input("Shoe Size", value=default_shoe)
+
+    style = st.multiselect(
+        "Style Preferences",
+        ["Casual","Formal","Party","Business","Athleisure","Luxury"],
+        default=default_style
+    )
+
+    prefer_luxury = st.selectbox(
+        "Price Level",
+        ["Budget", "Mid-range", "Luxury Only"],
+        index=["Budget","Mid-range","Luxury Only"].index(default_price)
+    )
+
+    st.markdown("**Favorite Brands**")
+    all_brands = sorted(products["brand"].unique().tolist())
+    fav_brands = st.multiselect("Choose brands", all_brands, default=default_brands)
+
+    st.markdown("**Preferred Stores**")
+    all_stores = sorted(products["store"].unique().tolist())
+    fav_stores = st.multiselect("Choose stores", all_stores, default=default_stores)
+
+    st.markdown("**Favorite Categories**")
+    cats = sorted(products["category"].unique().tolist())
+    fav_cats = st.multiselect("Categories", cats, default=default_cats)
+
+    notes = st.text_area("Notes", value=default_notes)
+
+    submitted = st.form_submit_button("💾 Save Changes")
+    if submitted:
+        if not name.strip():
+            st.warning("Name cannot be empty.")
+        else:
+            updated_profile = {
+                "height_in": height_in,
+                "weight_lb": weight_lb,
+                "sizes": {"top": top_size, "bottom": bottom_size, "shoe": shoe_size},
+                "style": style,
+                "price_pref": prefer_luxury,
+                "brands": fav_brands,
+                "stores": fav_stores,
+                "categories": fav_cats,
+                "notes": notes,
+            }
+            save_profile(name, updated_profile)
+            st.success("Profile saved successfully!")
+
+# --------------------------
+# DELETE OPTION
+# --------------------------
+
+if chosen != "Create New":
+    if st.button("🗑️ Delete Profile"):
+        delete_profile(chosen)
+        st.success("Profile deleted. Please refresh the page.")
