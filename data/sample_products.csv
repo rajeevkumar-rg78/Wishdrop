@@ -1,255 +1,101 @@
-import csv
-from pathlib import Path
-
-# -----------------------------------------
-# Luxury-only product generator for WishDrop
-# -----------------------------------------
-OUT_PATH = Path("data/sample_products.csv")
-
-
-BRANDS = [
-    {
-        "brand": "Prada",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Bergdorf Goodman", "Prada Boutique"],
-        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses", "Women > Jackets"]
-    },
-    {
-        "brand": "Gucci",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Nordstrom", "Gucci Boutique"],
-        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses", "Accessories > Belts"]
-    },
-    {
-        "brand": "Louis Vuitton",
-        "stores": ["Louis Vuitton", "Saks Fifth Avenue", "Neiman Marcus"],
-        "categories": ["Women > Bags", "Accessories > Wallets", "Women > Shoes"]
-    },
-    {
-        "brand": "Chanel",
-        "stores": ["Chanel Boutique", "Nordstrom"],
-        "categories": ["Women > Bags", "Women > Shoes", "Beauty > Fragrance", "Beauty > Makeup"]
-    },
-    {
-        "brand": "Dior",
-        "stores": ["Dior Boutique", "Sephora", "Saks Fifth Avenue"],
-        "categories": ["Beauty > Fragrance", "Beauty > Makeup", "Women > Dresses"]
-    },
-    {
-        "brand": "Burberry",
-        "stores": ["Nordstrom", "Saks Fifth Avenue", "Burberry Boutique"],
-        "categories": ["Women > Jackets", "Men > Jackets", "Women > Bags"]
-    },
-    {
-        "brand": "Saint Laurent",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Bergdorf Goodman"],
-        "categories": ["Women > Bags", "Women > Shoes", "Women > Dresses"]
-    },
-    {
-        "brand": "Fendi",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
-        "categories": ["Women > Bags", "Accessories > Wallets", "Women > Shoes"]
-    },
-    {
-        "brand": "Valentino",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus", "Nordstrom"],
-        "categories": ["Women > Shoes", "Women > Dresses", "Women > Bags"]
-    },
-    {
-        "brand": "Givenchy",
-        "stores": ["Saks Fifth Avenue", "Sephora"],
-        "categories": ["Beauty > Fragrance", "Women > Bags", "Women > Shoes"]
-    },
-    {
-        "brand": "Bottega Veneta",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
-        "categories": ["Women > Bags", "Women > Shoes"]
-    },
-    {
-        "brand": "Celine",
-        "stores": ["Saks Fifth Avenue", "Neiman Marcus"],
-        "categories": ["Women > Bags", "Women > Dresses"]
-    }
-]
-
-# Simple style words so names look more human
-STYLES = [
-    "Classic", "Signature", "Runway", "Icon", "Limited",
-    "Mini", "Large", "Quilted", "Leather", "Canvas"
-]
-
-# -----------------------------------------
-# Helper functions
-# -----------------------------------------
-def base_price_for(category: str) -> float:
-    """Return a realistic MSRP given the category."""
-    if "Bags" in category or "Wallets" in category:
-        return 2200.0
-    if "Shoes" in category:
-        return 950.0
-    if "Dresses" in category or "Jackets" in category:
-        return 1800.0
-    if "Fragrance" in category:
-        return 165.0
-    if "Makeup" in category:
-        return 75.0
-    if "Belts" in category:
-        return 650.0
-    return 1200.0
-
-
-def price_with_discount(msrp: float, discount_pct: int) -> float:
-    return round(msrp * (1 - discount_pct / 100.0), 2)
-
-
-def image_url_for(brand: str, category: str) -> str:
-    """
-    Use Unsplash source images with a consistent query.
-    This stays abstract but looks visually right.
-    """
-    query_parts = [brand]
-    if "Bags" in category or "Wallets" in category:
-        query_parts.append("luxury bag")
-    elif "Shoes" in category:
-        query_parts.append("designer shoes")
-    elif "Dresses" in category:
-        query_parts.append("designer dress")
-    elif "Jackets" in category:
-        query_parts.append("trench coat")
-    elif "Fragrance" in category:
-        query_parts.append("perfume bottle")
-    elif "Makeup" in category:
-        query_parts.append("makeup flatlay")
-    elif "Belts" in category:
-        query_parts.append("designer belt")
-    else:
-        query_parts.append("fashion")
-
-    query = "+".join(q.replace(" ", "+") for q in query_parts)
-    return f"https://source.unsplash.com/600x750/?{query}"
-
-
-def product_url_for(store: str, name: str) -> str:
-    """Fake but plausible product search URL."""
-    base = {
-        "Saks Fifth Avenue": "https://www.saksfifthavenue.com/search?keyword=",
-        "Neiman Marcus": "https://www.neimanmarcus.com/search.jsp?Ntt=",
-        "Bergdorf Goodman": "https://www.bergdorfgoodman.com/search.jsp?Ntt=",
-        "Nordstrom": "https://www.nordstrom.com/sr?keyword=",
-        "Bloomingdale's": "https://www.bloomingdales.com/shop/featured/",
-        "Prada Boutique": "https://www.prada.com/search?q=",
-        "Gucci Boutique": "https://www.gucci.com/us/en/search/?q=",
-        "Louis Vuitton": "https://us.louisvuitton.com/eng-us/search/",
-        "Chanel Boutique": "https://www.chanel.com/us/search/?q=",
-        "Dior Boutique": "https://www.dior.com/en_us/search?q=",
-        "Burberry Boutique": "https://us.burberry.com/search/?q=",
-        "Sephora": "https://www.sephora.com/search?keyword="
-    }.get(store, "https://www.google.com/search?q=")
-
-    q = name.replace(" ", "+")
-    return f"{base}{q}"
-
-
-# -----------------------------------------
-# Build 100 luxury products
-# -----------------------------------------
-def build_products(max_items: int = 100):
-    rows = []
-    next_id = 1000
-
-    for brand_info in BRANDS:
-        brand = brand_info["brand"]
-        for store in brand_info["stores"]:
-            for category in brand_info["categories"]:
-                if len(rows) >= max_items:
-                    break
-
-                # Create 1–2 variations per combo
-                for style in STYLES[:2]:
-                    if len(rows) >= max_items:
-                        break
-
-                    next_id += 1
-                    pid = f"L-{next_id}"
-
-                    # Build a nice name
-                    base_name = category.split(">")[-1].strip()  # e.g. "Bags"
-                    if "Bags" in base_name:
-                        item_word = "Bag"
-                    elif "Shoes" in base_name:
-                        item_word = "Heels"
-                    elif "Dresses" in base_name:
-                        item_word = "Dress"
-                    elif "Jackets" in base_name:
-                        item_word = "Jacket"
-                    elif "Wallets" in base_name:
-                        item_word = "Wallet"
-                    elif "Belts" in base_name:
-                        item_word = "Belt"
-                    elif "Fragrance" in base_name:
-                        item_word = "Eau de Parfum"
-                    elif "Makeup" in base_name:
-                        item_word = "Lipstick"
-                    else:
-                        item_word = base_name
-
-                    name = f"{brand} {style} {item_word}"
-
-                    msrp = base_price_for(category)
-
-                    # choose a realistic discount 15–45%
-                    discount_pct = 15 + ((next_id * 7) % 31)  # deterministic but varied
-                    price = price_with_discount(msrp, discount_pct)
-
-                    img = image_url_for(brand, category)
-                    url = product_url_for(store, name)
-
-                    rows.append({
-                        "id": pid,
-                        "name": name,
-                        "brand": brand,
-                        "category": category,
-                        "store": store,
-                        "msrp": round(msrp, 2),
-                        "price": price,
-                        "discount_pct": discount_pct,
-                        "image_url": img,
-                        "product_url": url,
-                    })
-
-                if len(rows) >= max_items:
-                    break
-            if len(rows) >= max_items:
-                break
-        if len(rows) >= max_items:
-            break
-
-    return rows
-
-
-def main():
-    rows = build_products(max_items=100)
-
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with OUT_PATH.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=[
-                "id",
-                "name",
-                "brand",
-                "category",
-                "store",
-                "msrp",
-                "price",
-                "discount_pct",
-                "image_url",
-                "product_url",
-            ],
-        )
-        writer.writeheader()
-        writer.writerows(rows)
-
-    print(f"Wrote {len(rows)} luxury items to {OUT_PATH}")
-
-
-if __name__ == "__main__":
-    main()
+id,name,brand,category,store,msrp,price,discount_pct,image_url,product_url
+P-1000,Versace Ultra Jacket,Versace,Men > Shirts,Target,701,350.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1001,Valentino Signature Sneakers,Valentino,Women > Dresses,Amazon,1426,570.4,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1002,YSL Signature Bag,YSL,Men > Jackets,Neiman Marcus,1574,1101.8,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1003,Louis Vuitton Icon Backpack,Louis Vuitton,Electronics > Headphones,Apple Store,1388,1110.4,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1004,Ferragamo Icon Wallet,Ferragamo,Men > Jackets,Bergdorf Goodman,2424,1696.8,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1005,Givenchy Signature Watch,Givenchy,Beauty > Makeup,Target,2175,1522.5,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1006,Valentino Icon Laptop,Valentino,Women > Shoes,Costco,1551,1163.25,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1007,Chanel Limited Backpack,Chanel,Beauty > Makeup,Louis Vuitton,796,477.6,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1008,YSL Signature Bag,YSL,Men > Shoes,Saks Fifth Avenue,1194,955.2,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1009,Gucci Icon Dress,Gucci,Women > Dresses,Sephora,1908,1431.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1010,Ferragamo Icon Shoes,Ferragamo,Beauty > Fragrance,Neiman Marcus,631,410.15,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1011,Givenchy Icon Laptop,Givenchy,Women > Shoes,Sephora,2046,1636.8,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1012,Moncler Classic Watch,Moncler,Beauty > Makeup,Prada,1739,1391.2,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1013,Gucci Icon Wallet,Gucci,Beauty > Fragrance,Neiman Marcus,516,387.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1014,Gucci Signature Backpack,Gucci,Sports > Fitness,Bloomingdale's,799,399.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1015,Prada Limited Wallet,Prada,Women > Dresses,Saks Fifth Avenue,1811,905.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1016,Burberry Icon Bag,Burberry,Men > Jackets,Apple Store,1858,1486.4,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1017,Givenchy Ultra Sneakers,Givenchy,Beauty > Makeup,Neiman Marcus,1303,846.95,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1018,Balenciaga Classic Sneakers,Balenciaga,Men > Jackets,Saks Fifth Avenue,553,497.7,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1019,Versace Classic Backpack,Versace,Women > Shoes,Amazon,1172,586.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1020,Gucci Signature Sneakers,Gucci,Electronics > Wearables,Apple Store,1116,892.8,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1021,Moncler Classic Sneakers,Moncler,Men > Jackets,Ulta Beauty,718,538.5,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1022,Versace Classic Backpack,Versace,Men > Shirts,Ulta Beauty,1407,984.9,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1023,Prada Signature Perfume,Prada,Men > Jackets,Neiman Marcus,1555,622.0,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1024,Gucci Signature Watch,Gucci,Men > Shirts,Sephora,2083,833.2,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1025,Versace Icon Sneakers,Versace,Women > Handbags,Bloomingdale's,1844,737.6,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1026,Bottega Veneta Limited Shoes,Bottega Veneta,Women > Handbags,Gucci,1760,1408.0,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1027,Dior Classic Watch,Dior,Women > Handbags,Costco,1207,603.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1028,Burberry Signature Wallet,Burberry,Men > Jackets,Prada,737,626.45,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1029,Fendi Ultra Laptop,Fendi,Home > Decor,Apple Store,2205,1543.5,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1030,Dior Limited Watch,Dior,Electronics > Wearables,Burberry,1065,532.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1031,Dior Signature Laptop,Dior,Electronics > Headphones,Best Buy,1667,666.8,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1032,Gucci Icon Backpack,Gucci,Electronics > Headphones,Louis Vuitton,295,177.0,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1033,Moncler Classic Jacket,Moncler,Home > Decor,Macy's,1806,1083.6,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1034,YSL Signature Bag,YSL,Electronics > Headphones,Prada,1424,854.4,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1035,Balenciaga Ultra Sneakers,Balenciaga,Home > Decor,Neiman Marcus,1554,1320.9,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1036,Louis Vuitton Ultra Laptop,Louis Vuitton,Women > Dresses,Macy's,1031,618.6,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1037,Moncler Limited Bag,Moncler,Men > Jackets,Best Buy,1167,991.95,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1038,Ferragamo Classic Sneakers,Ferragamo,Women > Handbags,Louis Vuitton,794,674.9,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1039,Balenciaga Classic Jacket,Balenciaga,Men > Shirts,Apple Store,1366,887.9,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1040,Givenchy Classic Backpack,Givenchy,Electronics > Wearables,Prada,1258,880.6,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1041,Chanel Ultra Wallet,Chanel,Beauty > Fragrance,Chanel,276,138.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1042,Versace Signature Mixer,Versace,Beauty > Makeup,Costco,241,192.8,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1043,YSL Icon Shoes,YSL,Beauty > Fragrance,Target,882,529.2,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1044,Bottega Veneta Limited Wallet,Bottega Veneta,Women > Jewelry,Costco,1083,920.55,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1045,Prada Ultra Mixer,Prada,Women > Handbags,Nordstrom,2169,1409.85,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1046,Bottega Veneta Ultra Backpack,Bottega Veneta,Men > Shirts,Prada,2432,2067.2,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1047,Moncler Classic Watch,Moncler,Electronics > Wearables,Neiman Marcus,436,327.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1048,Burberry Ultra Shoes,Burberry,Men > Shirts,Home Depot,1269,1078.65,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1049,Ferragamo Icon Perfume,Ferragamo,Women > Handbags,Macy's,1792,896.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1050,Burberry Signature Perfume,Burberry,Women > Jewelry,Gucci,754,301.6,60,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1051,Givenchy Icon Bag,Givenchy,Women > Shoes,Neiman Marcus,416,208.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1052,Gucci Limited Mixer,Gucci,Women > Shoes,Gucci,639,319.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1053,Gucci Ultra Watch,Gucci,Men > Shirts,Target,424,275.6,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1054,Moncler Icon Watch,Moncler,Women > Handbags,Amazon,369,295.2,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1055,Prada Icon Wallet,Prada,Men > Jackets,Macy's,2171,1953.9,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1056,Louis Vuitton Limited Laptop,Louis Vuitton,Home > Decor,Bloomingdale's,1386,1178.1,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1057,YSL Classic Jacket,YSL,Women > Handbags,Prada,1816,1180.4,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1058,Valentino Ultra Shoes,Valentino,Women > Handbags,Chanel,1685,1179.5,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1059,Louis Vuitton Limited Perfume,Louis Vuitton,Men > Shirts,Chanel,1118,894.4,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1060,Balenciaga Limited Jacket,Balenciaga,Men > Shirts,Bergdorf Goodman,2032,1625.6,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1061,Gucci Limited Shoes,Gucci,Men > Shoes,Best Buy,1636,1227.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1062,Versace Ultra Bag,Versace,Electronics > Headphones,Apple Store,209,125.4,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1063,Chanel Icon Watch,Chanel,Women > Shoes,Burberry,2398,2158.2,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1064,Bottega Veneta Signature Shoes,Bottega Veneta,Beauty > Makeup,Best Buy,1884,1413.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1065,Moncler Signature Mixer,Moncler,Home > Decor,Apple Store,1576,1260.8,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1066,YSL Icon Jacket,YSL,Men > Jackets,Sephora,484,290.4,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1067,Balenciaga Icon Mixer,Balenciaga,Women > Jewelry,Bloomingdale's,395,197.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1068,Versace Signature Mixer,Versace,Electronics > Wearables,Sephora,1819,1364.25,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1069,Prada Signature Bag,Prada,Beauty > Fragrance,Saks Fifth Avenue,697,348.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1070,Balenciaga Classic Jacket,Balenciaga,Home > Decor,Neiman Marcus,1962,1177.2,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1071,Moncler Ultra Perfume,Moncler,Home > Decor,Macy's,938,469.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1072,Balenciaga Limited Mixer,Balenciaga,Electronics > Headphones,Chanel,2365,1419.0,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1073,Louis Vuitton Icon Watch,Louis Vuitton,Men > Jackets,Gucci,823,534.95,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1074,Versace Limited Laptop,Versace,Beauty > Fragrance,Neiman Marcus,918,826.2,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1075,Bottega Veneta Ultra Mixer,Bottega Veneta,Home > Decor,Macy's,902,811.8,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1076,YSL Icon Mixer,YSL,Home > Decor,Neiman Marcus,2195,1646.25,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1077,Chanel Limited Perfume,Chanel,Men > Shirts,Home Depot,815,733.5,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1078,Prada Icon Perfume,Prada,Electronics > Headphones,Costco,1035,672.75,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1079,Dior Ultra Perfume,Dior,Electronics > Headphones,Saks Fifth Avenue,1509,1358.1,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1080,Gucci Classic Backpack,Gucci,Electronics > Wearables,Gucci,591,354.6,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1081,Versace Signature Jacket,Versace,Women > Dresses,Sephora,892,446.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1082,Valentino Signature Laptop,Valentino,Women > Jewelry,Chanel,967,483.5,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1083,Chanel Ultra Bag,Chanel,Women > Shoes,Burberry,494,247.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1084,Gucci Limited Mixer,Gucci,Beauty > Makeup,Costco,1386,693.0,50,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1085,Fendi Classic Wallet,Fendi,Men > Shirts,Louis Vuitton,1126,675.6,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1086,Gucci Limited Backpack,Gucci,Beauty > Makeup,Bloomingdale's,1734,1473.9,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1087,Givenchy Signature Perfume,Givenchy,Women > Dresses,Home Depot,2035,1831.5,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1088,YSL Ultra Laptop,YSL,Beauty > Makeup,Chanel,1562,1405.8,10,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1089,Givenchy Icon Watch,Givenchy,Women > Handbags,Saks Fifth Avenue,804,603.0,25,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1090,Fendi Icon Mixer,Fendi,Electronics > Headphones,Nordstrom,1526,1068.2,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1091,Dior Icon Bag,Dior,Electronics > Headphones,Amazon,1742,1480.7,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1092,Dior Ultra Laptop,Dior,Beauty > Fragrance,Saks Fifth Avenue,382,305.6,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1093,Chanel Limited Laptop,Chanel,Women > Dresses,Bergdorf Goodman,1396,1116.8,20,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1094,Dior Icon Wallet,Dior,Beauty > Makeup,Apple Store,2373,1661.1,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1095,Valentino Limited Bag,Valentino,Women > Handbags,Prada,1367,820.2,40,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1096,YSL Signature Dress,YSL,Sports > Fitness,Gucci,1072,696.8,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1097,Bottega Veneta Limited Perfume,Bottega Veneta,Women > Handbags,Costco,2358,1532.7,35,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1098,Chanel Classic Perfume,Chanel,Men > Jackets,Chanel,2035,1424.5,30,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
+P-1099,Balenciaga Icon Shoes,Balenciaga,Electronics > Wearables,Louis Vuitton,2126,1807.1,15,"https://source.unsplash.com/800x1000/?luxury,fashion,product",https://example.com/product
