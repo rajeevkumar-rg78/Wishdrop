@@ -1,88 +1,132 @@
-
 import streamlit as st
 import pandas as pd
 from utils.storage import save_board, get_board
-from utils.price import simulate_price_history
+from utils.price import simulate_price_history, buy_or_wait_signal
 
 st.header("❤️ Boards & Alerts")
 
 products = pd.read_csv("data/sample_products.csv")
 
-user = st.sidebar.text_input("Profile name to save board under", placeholder="Use your profile name")
-if user:
-    current = get_board(user)
-    if "saved" not in st.session_state:
-        st.session_state["saved"] = set(current.get("saved", []))
-    else:
-        st.session_state["saved"].update(current.get("saved", []))
-    if "tracked" not in st.session_state:
-        st.session_state["tracked"] = dict(current.get("tracked", {}))
-    else:
-        st.session_state["tracked"].update(current.get("tracked", {}))
+# ---------------- Store Icons ----------------
+STORE_ICONS = {
+    "Nordstrom": "🖤",
+    "Bloomingdale's": "🛍️",
+    "Saks Fifth Avenue": "🤍",
+    "Neiman Marcus": "💎",
+    "Bergdorf Goodman": "👑",
+    "Chanel": "⚫",
+    "Prada": "🪩",
+    "Gucci": "🟩",
+    "Louis Vuitton": "🧡",
+    "Burberry": "🤎",
+    "Sephora": "💄",
+    "Ulta Beauty": "🪞",
+    "Macy's": "⭐",
+    "Amazon": "🟧",
+    "Target": "🎯",
+    "Best Buy": "🔵",
+    "Apple Store": "",
+    "Costco": "🅲",
+    "Home Depot": "🛠️"
+}
 
-st.subheader("Saved Items")
-saved_ids = list(st.session_state.get("saved", set()))
-saved_df = products[products["id"].isin(saved_ids)]
-if saved_df.empty:
-    st.info("No saved items yet. Go to **🖼️ Discover** and click ❤️ Save.")
+# ---------------- Load User Board ----------------
+user = st.sidebar.text_input("Profile name (same as Discover page)", placeholder="Enter saved profile name")
+
+if not user:
+    st.info("Enter your profile name in the left sidebar to load/save boards.")
+    st.stop()
+
+board_data = get_board(user)
+
+# Initialize session state
+if "saved" not in st.session_state:
+    st.session_state["saved"] = set(board_data.get("saved", []))
+
+if "tracked" not in st.session_state:
+    st.session_state["tracked"] = board_data.get("tracked", {})
+
+saved_ids = list(st.session_state["saved"])
+tracked_items = dict(st.session_state["tracked"])
+
+# ---------------- Saved Items ----------------
+st.subheader("⭐ Saved Items")
+
+if not saved_ids:
+    st.info("Nothing saved yet. Use the ❤️ button in Discover.")
 else:
-    st.caption("Export your board or adjust alert thresholds.")
-    c1, c2 = st.columns([1,1])
-    with c1:
-        st.download_button("Download Board (CSV)", saved_df.to_csv(index=False), file_name="my_board.csv", mime="text/csv")
-    with c2:
-        if st.button("Clear Board"):
-            st.session_state["saved"] = set()
-            st.experimental_rerun()
+    cols = st.columns(2, gap="large")
 
-    cols = st.columns(3, gap="large")
-    for i, row in saved_df.reset_index(drop=True).iterrows():
-        with cols[i % 3]:
-            st.image(row["image_url"], use_container_width=True)
-            st.markdown(f"**{row['name']}**")
-            st.caption(f"{row['brand']} • {row['category']} • {row['store']}")
-            st.markdown(f"${row['price']:,.2f}  ~  ~~${row['msrp']:,.2f}~~  •  **-{int(row['discount_pct'])}%**")
-            thr = st.number_input("Alert threshold %", min_value=1, max_value=50, value=st.session_state.get("tracked", {}).get(row["id"], 10), key=f"thr_{row['id']}")
-            if st.button("Enable Alert", key=f"enable_{row['id']}"):
-                tracked = st.session_state.get("tracked", {})
-                tracked[row["id"]] = thr
-                st.session_state["tracked"] = tracked
-                st.success(f"Alerts enabled for {row['name']} @ {thr}%")
+    for i, pid in enumerate(saved_ids):
+        item = products[products["id"] == pid].iloc[0]
 
-st.subheader("Alerts & Trends")
-tracked = st.session_state.get("tracked", {})
-if not tracked:
-    st.info("No tracked items yet.")
+        with cols[i % 2]:
+            img = item["image_url"].replace("800x1000", "400x500")
+            st.image(img, use_container_width=True)
+
+            store_icon = STORE_ICONS.get(item["store"], "🛒")
+
+            st.markdown(f"### {item['name']}")
+            st.caption(f"{store_icon} {item['store']} • {item['brand']} • {item['category']}")
+
+            st.markdown(
+                f"**${item['price']:,.2f}**  "
+                f"<span style='color:gray;'>~~${item['msrp']:,.2f}~~</span>  "
+                f"<span style='color:green;'>-{int(item['discount_pct'])}%</span>",
+                unsafe_allow_html=True
+            )
+
+            if st.button(f"❌ Remove", key=f"remove_{pid}"):
+                st.session_state["saved"].remove(pid)
+                st.experimental_rerun()
+
+# ---------------- Price Alerts ----------------
+st.subheader("🔔 Price Alerts")
+
+if not tracked_items:
+    st.info("No items are being tracked. Use the 🔔 Track button in Discover.")
 else:
-    alerts = []
-    if "price_cache" not in st.session_state:
-        st.session_state.price_cache = {}
-    for tid, thr in tracked.items():
-        row = products[products["id"] == tid].iloc[0]
-        if tid not in st.session_state.price_cache:
-            st.session_state.price_cache[tid] = simulate_price_history(row["price"], days=60)
-        series = st.session_state.price_cache[tid]
-        min30 = series[-30:].min()
-        drop = (row["price"] - min30) / row["price"] * 100.0
-        if drop <= thr:
-            alerts.append((row, drop))
+    cols = st.columns(2, gap="large")
 
-    if alerts:
-        for row, drop in alerts:
-            with st.container(border=True):
-                st.markdown(f"### 🔔 {row['name']}")
-                st.caption(f"{row['brand']} • {row['store']} • {row['category']}")
-                st.write(f"**Now:** ${row['price']:,.2f} • **30‑day low proximity:** {drop:.1f}%")
-                st.link_button("Open product", row["product_url"])
-    else:
-        st.success("No alerts met your thresholds today.")
+    for i, (pid, threshold) in enumerate(tracked_items.items()):
+        item = products[products["id"] == pid].iloc[0]
 
-st.markdown("---")
-if user:
-    if st.button("💾 Save Board to Profile"):
-        payload = {
-            "saved": list(st.session_state.get("saved", set())),
-            "tracked": st.session_state.get("tracked", {})
+        with cols[i % 2]:
+            img = item["image_url"].replace("800x1000", "400x500")
+            st.image(img, use_container_width=True)
+
+            store_icon = STORE_ICONS.get(item["store"], "🛒")
+            st.markdown(f"### {item['name']}")
+            st.caption(f"{store_icon} {item['store']} • {item['brand']} • {item['category']}")
+
+            st.markdown(
+                f"**Current Price: ${item['price']:,.2f}**  \n"
+                f"Tracking alert if drops **{threshold}%** below today.",
+                unsafe_allow_html=True
+            )
+
+            with st.expander("📉 Price Trend"):
+                series = simulate_price_history(item["price"], days=60)
+                st.line_chart(series)
+
+                rec, note = buy_or_wait_signal(series, item["price"])
+                st.markdown(f"**AI Advice: {rec}**")
+                st.caption(note)
+
+            if st.button(f"❌ Stop Tracking", key=f"stop_{pid}"):
+                del st.session_state["tracked"][pid]
+                st.experimental_rerun()
+
+# ---------------- Save Board ----------------
+st.sidebar.markdown("---")
+if st.sidebar.button("💾 Save Board"):
+    save_board(
+        user,
+        {
+            "saved": list(st.session_state["saved"]),
+            "tracked": st.session_state["tracked"]
         }
-        save_board(user, payload)
-        st.success("Board saved to your profile.")
+    )
+    st.sidebar.success("Board saved!")
+
+
