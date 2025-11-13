@@ -14,7 +14,7 @@ chosen = st.selectbox("Choose profile", existing, index=0)
 if chosen == "Create New":
     st.subheader("Create Your Shopping Profile")
     with st.form("profile_form", clear_on_submit=False):
-        name = st.text_input("Name", placeholder="e.g., Shalini")
+        name = st.text_input("Name", placeholder="e.g., John")
         height_in = st.number_input("Height (inches)", min_value=50, max_value=80, value=64)
         weight_lb = st.number_input("Weight (lbs)", min_value=80, max_value=300, value=140)
         top_size = st.text_input("Top Size (e.g., S, M, L, 8)")
