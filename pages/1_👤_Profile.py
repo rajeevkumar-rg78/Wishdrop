@@ -5,12 +5,28 @@ from utils.storage import list_profiles, get_profile, save_profile, delete_profi
 # Fix selectbox scrolling issue (global CSS)
 st.markdown("""
 <style>
+
+/* Fix for selectbox dropdown scroll */
 div[data-baseweb="select"] > div {
     max-height: 250px !important;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
+
+/* Fix for multiselect dropdown scroll (brands, categories) */
+div[role="listbox"] {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+}
+
+/* Fix for popover containers used by multiselect */
+div[data-baseweb="popover"] {
+    max-height: 250px !important;
+    overflow-y: auto !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 st.header("👤 Profile")
 
